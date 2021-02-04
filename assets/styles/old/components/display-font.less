@@ -1,0 +1,32 @@
+@import "../mb-utils.less";
+
+@font-face {
+    font-family: 'sofia_probold';
+    src: url('/bundles/mybuilderapplication/fonts/sofiaprobold-webfont.eot');
+    src: url('/bundles/mybuilderapplication/fonts/sofiaprobold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/bundles/mybuilderapplication/fonts/sofiaprobold-webfont.woff2') format('woff2'),
+         url('/bundles/mybuilderapplication/fonts/sofiaprobold-webfont.woff') format('woff'),
+         url('/bundles/mybuilderapplication/fonts/sofiaprobold-webfont.ttf') format('truetype'),
+         url('/bundles/mybuilderapplication/fonts/sofiaprobold-webfont.svg#sofia_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.heading {
+    &.heading-hero,
+    &.heading-x-large,
+    &.heading--x-large,
+    &.heading-large,
+    &.heading--large,
+    &.heading-medium,
+    &.heading--medium,
+    &.heading-small-alt {
+        font-family: @displayFontFamily;
+        font-weight: normal;
+        &.heading-alt {
+            font-family: inherit;
+            font-weight: bold;
+        }
+    }
+}

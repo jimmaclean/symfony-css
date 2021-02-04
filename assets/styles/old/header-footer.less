@@ -1,0 +1,1174 @@
+//This is the less file for the site wide header/footer
+
+@import "mb-utils.less";
+
+// Our local variables, mixins and other useful stuff
+
+@adminHeaderHeight: 25px;
+// @tabletWidth: 760px;
+@tabletWidth: @mobileWidth;
+
+// Animation parameters for the navigation
+// drawer effect on narrow viewports.
+@navDrawerAnimDuration: 0.2s;
+@navDrawerAnimTiming: ease-out;
+
+
+//We need to add space to the top of the body for the fixed header
+@media screen and (min-width: @mobileWidth) {
+  body {
+    &.has-admin-header {
+      padding-top: @adminHeaderHeight;
+    }
+  }
+}
+
+header.admin {
+  display: none;
+}
+
+//non mobile devices
+@media screen and (min-width: @mobileWidth) {
+  //Admin header bar that sometimes appears
+  header.admin {
+    background-color: @grayDarker;
+    color: @white;
+    height: @adminHeaderHeight;
+    display: block;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    a,
+    #refresh-css {
+      color: @orange;
+      cursor: pointer;
+    }
+    .tools {
+      padding-top: 2px;
+      [class^="mb-"]:before,
+      [class*="mb-"]:before {
+        margin-right: 0;
+      }
+    }
+    .close-admin {
+      font-size: 1.1em;
+    }
+    &.live {
+      background-color: @red;
+      a,
+      #refresh-css {
+        color: @greenLight;
+      }
+    }
+  }
+
+  body.blog header.admin {
+    display: none;
+  }
+}
+
+/*
+    On narrow viewports, the site nav pushes slides in
+    from the right and covers the page. The trigger for
+    the animation is the presence of the .nav-open
+    class on the <html> element.
+
+    However, on wider viewports, where the nav is
+    part of the normal page flow, we always want to
+    allow the page to scroll, regardless of whether
+    .nav-open is present or not.
+ */
+html {
+    /**
+        ~ Shade effect ~
+
+        Create a little overlay that covers the viewport
+        and fades in while the nav overlay slides in, to
+        darken the page below.
+     */
+    &::after {
+        content: '';
+        // Don't prevent interactions with page
+        // below!
+        pointer-events: none;
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: @mb-z-index-overlay-backdrop;
+        opacity: 0;
+        transition: opacity @navDrawerAnimDuration @navDrawerAnimTiming;
+        background-color: black;
+    }
+
+    &.nav-open {
+        overflow: hidden;
+
+        &::after {
+            opacity: 0.75;
+            pointer-events: auto;
+        }
+    }
+
+    @media (min-width: @navbarCollapseWidth) {
+        // Restore page scrolling, even if
+        // nav menu is in "open" state
+        &.nav-open {
+            overflow-y: auto;
+        }
+
+        // Remove shade overlay, as we don't
+        // need it.
+        &::after {
+            display: none;
+        }
+    }
+}
+
+// Button-like styles used by
+// "Post a job", "Menu", "Close" and "My Account"
+@siteHeaderButtonHeight: 32px;
+@siteHeaderBorderWidth: 2px;
+@siteHeaderBorderRadius: 4px;
+
+.site-header-button {
+    background-color: #277adc;
+    color: @white;
+    border: none;
+    border-radius: @siteHeaderBorderRadius;
+    border-bottom: @siteHeaderBorderWidth solid #2171ce;
+    display: block;
+    box-sizing: border-box;
+
+    padding: 0 7px;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: inherit;
+    text-align: center;
+
+    min-width: 60px;
+    min-height: @siteHeaderButtonHeight;
+    line-height: @siteHeaderButtonHeight;
+
+    &:active {
+        border-bottom: none;
+        border-top: @siteHeaderBorderWidth solid #2171ce;
+    }
+
+    @media (min-width: @navbarCollapseWidth) {
+        font-size: inherit;
+        border: @siteHeaderBorderWidth solid @white;
+        background: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            background-color: @white;
+            color: @mb-blue;
+        }
+
+        &:active {
+            border: @siteHeaderBorderWidth solid @white;
+        }
+    }
+}
+
+@siteHeaderBorderColor: darken(@blueLight, 5%);
+
+// Header
+.site-header {
+    font-size: @fontSizeMedium;
+    background-color: @blueLight;
+    border-bottom: 3px solid @siteHeaderBorderColor;
+    margin-bottom: 1.5em;
+
+    ::selection,
+    ::-moz-selection {
+        background: transparent;
+    }
+
+
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 5px 7px;
+
+        // Undo clearfix applied by Bootstrap's
+        // .container class as it adds ::before
+        // and ::after pseudo elements, which
+        // interfere with our flexbox layout.
+        &.container::before,
+        &.container::after {
+            display: none;
+        }
+    }
+
+    &__logo {
+        display: block;
+        margin: 5px 8px 0;
+        max-width: 132px;
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        &:focus img {
+            .border-radius(4px);
+            background-color: rgba(47, 112, 213, 0.75) !important;
+            -webkit-box-shadow: 0px -1px 3px 5px rgba(47, 112, 213, 0.75);
+            -moz-box-shadow: 0px -1px 3px 5px rgba(47, 112, 213, 0.75);
+            box-shadow: 0px -1px 3px 5px rgba(47, 112, 213, 0.75);
+        }
+    }
+
+    &__primary-action {
+        // move PAJ/Leads to be 1st item in
+        // visual order
+        order: -1;
+    }
+
+    // Position nested .site-nav on wider
+    // viewports
+    @media (min-width: @navbarCollapseWidth) {
+        &__items {
+            padding: 0;
+        }
+
+        &__primary-action {
+            order: 0;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+
+        &__logo {
+            max-width: 148px;
+        }
+    }
+}
+
+
+@siteNavDrawerWidth: 85%;
+@siteNavDrawerMaxWidth: 24rem;
+
+@navLinkHoverBgColor: @siteHeaderBorderColor;
+
+@navLinkPadding: 1rem 0.5rem;
+@navLinkPaddingWideHorizontal: 1rem;
+@navLinkPaddingWide: 0.8rem @navLinkPaddingWideHorizontal;
+
+@navToggleIndicatorWidth: 1rem;
+@navToggleIndicatorMargin: 0.75rem;
+
+// Main site navigation
+.site-nav {
+    // On narrow viewports, the site-nav appears as a
+    // fullscreen drawer that can push in from the right
+    // edge of the screen.
+    &__drawer {
+        // Position over the top of the viewport
+        background-color: @blueLight;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: @siteNavDrawerWidth;
+        max-width: @siteNavDrawerMaxWidth;
+        z-index: @mb-z-index-overlay;
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+
+        // Slide off-screen to the right
+        transform: translateX(100%);
+
+        // Ensures that the drawer is visible while
+        // transitioning open or closed
+        &--transitioning {
+            display: flex;
+            transition: transform @navDrawerAnimDuration @navDrawerAnimTiming;
+        }
+
+        .nav-open & {
+            // Slide back on-screen
+            display: flex;
+            transform: translateX(0);
+        }
+
+        // Undo above if JS is broken/unavailable
+        // Will look ugly, but at least links will
+        // be visible
+        .no-js & {
+            display: block;
+            position: static;
+            transition: none;
+            transform: none;
+            overflow: visible;
+        }
+    }
+
+    &__close {
+        flex-shrink: 0;
+        margin: 8px 5px 7px;
+    }
+
+    &__links-wrapper {
+        flex-grow: 1;
+        align-self: stretch;
+        overflow-y: auto;
+        border-top: 3px solid @siteHeaderBorderColor;
+        display: flex;
+        flex-direction: column;
+
+        // Add a pseudo element to create a margin
+        // below the PAJ button
+        // (Padding doesn't work due to this element
+        // having scrollable overflow. Neither does
+        // a bottom margin on the PAJ button, as that
+        // "spills out" of this element.)
+        &::after {
+            content: '';
+            display: block;
+            height: 1rem;
+            flex-shrink: 0;
+        }
+    }
+
+    &__top-items {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__item {
+        color: @white;
+        border-bottom: 2px solid @siteHeaderBorderColor;
+        margin: 0;
+        overflow: hidden; // prevent child elements from overlapping the rounded corners.
+    }
+
+    &__sub-nav-toggle {
+        display: flex;
+        align-items: center;
+        appearance: none;
+        border: none;
+        color: inherit;
+        background: none;
+        font-family: inherit;
+        font-size: inherit;
+        text-align: inherit;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        &::after {
+            display: block;
+            font-family: "mb-glyph";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+            margin: 0 @navToggleIndicatorMargin 0 0;
+            width: @navToggleIndicatorWidth;
+            text-align: center;
+            font-size: 1.2em;
+            align-self: center; // fixes wonky positioning in Safari 10
+        }
+
+        &[aria-expanded=true]::after {
+            content: '\e828'; // mb-up
+        }
+
+        &[aria-expanded=false]::after {
+            content: '\e829'; // mb-down
+        }
+
+        &:focus {
+            // This is OK as we are setting visible focus
+            // styling further down...
+            outline: none;
+        }
+    }
+
+    &__item-label {
+        display: block;
+        color: inherit;
+        font-weight: normal;
+        line-height: 1.4;
+        padding: @navLinkPadding;
+        border-left: 5px solid transparent;
+        flex-grow: 1; // for when it's inside a toggle button
+    }
+
+    // Interactive styles item links & toggles
+    &__item-label,
+    &__sub-nav-toggle {
+        &:focus-visible {
+            background: @navLinkHoverBgColor;
+        }
+    }
+
+    // Appear below site header's
+    // "Post a job" button and "MyBuilder" logo
+    .no-js & {
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    // Adjust things to horizontal layout for
+    // wider viewports
+    @media (min-width: @navbarCollapseWidth) {
+        // Move the indicator closer to the text
+        // by this amount
+        @subNavIndicatorNudge: 0.25rem;
+
+        border-left: 1px solid @siteHeaderBorderColor;
+        border-right: 1px solid @siteHeaderBorderColor;
+
+        // Undo nav-drawer effect and behave
+        // like a normal element on the page
+        &__drawer {
+            background: none;
+            position: relative;
+            transition: none;
+            transform: none;
+            overflow: visible;
+            display: block;
+            width: auto;
+            max-width: none;
+
+            // ...even when we're in the "open"
+            // state
+            .nav-open & {
+                transform: none;
+            }
+        }
+
+        &__menu-button,
+        &__close {
+            display: none;
+        }
+
+        &__links-wrapper {
+            display: block;
+            overflow: visible;
+            background: none;
+            border: none;
+            padding: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &__top-items {
+            display: flex;
+            margin: 0;
+        }
+
+        &__item {
+            border: none;
+            border-left: 1px solid @siteHeaderBorderColor;
+            border-right: 1px solid @siteHeaderBorderColor;
+            background: none;
+            overflow: visible;
+            position: relative;
+
+            // Position sub-navs to overflow
+            // below the nav item and give
+            // them a shadow to look more menu-like
+            .sub-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: 100%;
+                box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.5);
+
+                .no-js & {
+                    position: static;
+                }
+            }
+
+            &--narrow-only {
+                display: none;
+            }
+        }
+
+        &__item.active {
+            background-color: @siteHeaderBorderColor;
+        }
+
+        &__item-label {
+            border: none;
+            font-weight: bold;
+            padding: @navLinkPaddingWide;
+
+            // Avoid jank for category items before JS
+            // converts them into toggle buttons
+            strong& {
+                // Use margin to reserve space that will later be
+                // occupied by the up/down icon indicator
+                margin-right: @navToggleIndicatorWidth + @navToggleIndicatorMargin - @subNavIndicatorNudge;
+
+                // Once JS has wrapped us in a button, we can
+                // remove that space again (as the button will
+                // contain the indicator that takes up the same
+                // width)
+                button & {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        &__sub-nav-toggle &__item-label {
+            padding-right: @navLinkPaddingWideHorizontal - @subNavIndicatorNudge;
+        }
+
+        &__item-label,
+        &__sub-nav-toggle {
+            &:hover,
+            &:focus {
+                background: @navLinkHoverBgColor;
+            }
+        }
+
+        .no-js & {
+            margin-top: 0;
+            width: auto;
+        }
+    }
+}
+
+
+@subNavLinkActiveColor: @blueveryDark;
+@subNavLinkHoverBgColor: @mb-gray--bg;
+
+.sub-nav {
+    display: none;
+    list-style: none;
+    background-color: @white;
+    margin: 0;
+    color: @mb-blue;
+
+    .no-js &,
+    &--open {
+        display: block;
+    }
+
+
+    &__item {
+        & + & {
+            border-top: 2px solid lighten(@grayLighter, 15%);
+        }
+
+        &-label {
+            display: flex; // ensures long labels wrap the right of the icon
+            line-height: 1.4;
+            padding: @navLinkPadding;
+            border-left: 5px solid transparent;
+            font-weight: normal;
+            flex-grow: 1;
+
+            i {
+                color: @mb-gray--mid;
+            }
+        }
+
+        &.active > &-label {
+            border-color: @mb-orange;
+            color: @subNavLinkActiveColor;
+        }
+
+        &--wide-only {
+            display: none;
+        }
+
+
+        & + &--gap-before {
+            border-top-width: 8px;
+        }
+
+        &--no-icon a::before {
+            // compensate for lack of icon
+            content: '';
+            display: block;
+            width: 1.5em;
+        }
+    }
+
+    &__toggle {
+        display: flex;
+        align-items: center;
+        appearance: none;
+        border: none;
+        color: inherit;
+        background: none;
+        font-family: inherit;
+        font-size: inherit;
+        text-align: inherit;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+
+        &::after {
+            display: block;
+            font-family: "mb-glyph";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
+            margin: 0 @navToggleIndicatorMargin 0 0;
+            width: @navToggleIndicatorWidth;
+            text-align: center;
+            font-size: 1.2em;
+            align-self: center; // fixes wonky positioning in Safari 10
+        }
+
+        &[aria-expanded=true]::after {
+            content: '\e828'; // mb-up
+        }
+
+        &[aria-expanded=false]::after {
+            content: '\e829'; // mb-down
+        }
+
+        &:focus {
+            // This is OK as we are setting visible focus
+            // styling further down...
+            outline: none;
+        }
+    }
+
+    a,
+    &__toggle
+    {
+        &:focus-visible {
+            background: @subNavLinkHoverBgColor;
+        }
+    }
+
+    // nested sub-navs
+    & & {
+        background-color: @mb-gray--bg;
+        border-top: 2px solid lighten(@grayLighter, 5%);
+        border-bottom: 2px solid lighten(@grayLighter, 5%);
+
+        .sub-nav__item {
+            border-color: lighten(@grayLighter, 5%);
+        }
+
+        a,
+        .sub-nav__toggle
+        {
+            &:focus-visible {
+                background: darken(@subNavLinkHoverBgColor, 5%);
+            }
+        }
+
+        // indent links a bit
+        .sub-nav__item-label {
+            padding-left: 1.75rem;
+        }
+    }
+
+    // Tweaks for dropdown style on wide viewports
+    @media (min-width: @navbarCollapseWidth) {
+        font-size: @fontSizeStandard;
+
+        &__item {
+            & + & {
+                border-top-width: 1px;
+            }
+
+            &--narrow-only {
+                display: none;
+            }
+
+            &--wide-only {
+                display: block;
+            }
+
+            & + &--gap-before {
+                border-top-width: 5px;
+            }
+        }
+
+        a,
+        &__toggle
+        {
+            &:focus,
+            &:hover {
+                background: @subNavLinkHoverBgColor;
+            }
+        }
+
+        &__item-label {
+            padding: 0.6rem 1rem 0.6rem 0.3rem;
+            white-space: nowrap;
+
+            @media (min-height: 680px) {
+                // boost the height of the nav items on tall enough screens
+                padding-top: 0.8rem;
+                padding-bottom: 0.8rem;
+            }
+        }
+    }
+}
+
+// breadcrumb
+#breadcrumbs-container {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  #breadcrumbs {
+    .page-padding-mixin();
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        display: inline-block;
+        padding: 0;
+        .icon {
+          color: @grayLighter;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: @mobileWidth) {
+    display: none;
+  }
+}
+
+#breadcrumbs-container {
+  #breadcrumbs {
+    ol {
+      li {
+        span:before {
+          content: " ";
+        }
+        .icon {
+          font-family: "mb-glyph";
+          font-size: 0;
+          width: 12px;
+          &:after {
+            content: "\e843"; //mb-right
+            font-size: 14px;
+            margin: 0 0.25em;
+          }
+        }
+      }
+    }
+  }
+}
+
+// footer
+footer.site-footer {
+  color: @white;
+  margin-top: 3em;
+  background-color: darken(@mb-black, 8%);
+  .site-map {
+    .page-padding-mixin();
+    padding-top: 3em;
+    padding-bottom: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .heading {
+      color: @mb-gray--light;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1em;
+    }
+    .column {
+      flex: 0 0 100%;
+      font-size: 1.1428571429em;
+      line-height: 1.5em;
+      margin-bottom: 1em;
+    }
+    ul {
+      li {
+        margin-bottom: 0.75em;
+        a,
+        .jslink {
+          color: @mb-gray--bg;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .homeadvisor-group {
+      box-sizing: border-box;
+      width: 100%;
+      flex: 0 0 100%;
+      background-color: darken(@mb-black, 14%);
+      border-radius: 7px;
+      padding: 1em 2em;
+      text-align: center;
+      margin-bottom: 3em;
+      h3 {
+        font-size: 1em;
+        line-height: 1.5em;
+        margin-bottom: 0.5em;
+        color: @mb-gray--light;
+        font-weight: bold;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        color: @mb-gray--lighter;
+        li {
+          display: inline;
+          span {
+            margin: 0 0.5em;
+            color: @mb-gray--mid;
+          }
+        }
+      }
+    }
+    @media screen and (min-width: @mb-mobile) {
+      .column {
+        flex: 1 0 49%;
+        max-width: 49%;
+        margin-bottom: 2em;
+        ul {
+          margin-right: 1em;
+        }
+      }
+    }
+    @media screen and (min-width: @mb-tablet) {
+      .column {
+        max-width: 24%;
+        flex: 1 0 24%;
+      }
+    }
+  }
+  .social-and-legal {
+    .page-padding-mixin();
+    padding-top: 2em;
+    padding-bottom: 2em;
+    text-align: left;
+    background-color: darken(@mb-black, 14%);
+    .container {
+      position: relative;
+    }
+    p {
+      margin: 0;
+      line-height: 1.5em;
+      font-size: 0.857em;
+      color: @mb-gray--mid;
+    }
+    .jslink {
+      color: @mb-gray--light;
+    }
+    .legal-footer {
+      span {
+        margin-right: 0.5em;
+      }
+    }
+    @media screen and (max-width: @mobileWidth) {
+      .container {
+        height: auto;
+      }
+      p br {
+        display: none;
+      }
+    }
+  }
+
+  .footer-logo {
+    float: right;
+    margin-top: 3px;
+  }
+
+  // FAT links on footer
+  .footer-locations,
+  .footer-trades {
+    width: 100%;
+    font-size: 13px;
+    .heading {
+      color: @mb-gray--mid;
+      font-size: 15px;
+    }
+    ul {
+      li {
+        margin-right: 1em;
+        a {
+          color: @mb-gray--light;
+        }
+      }
+    }
+  }
+
+  .footer-locations {
+    margin-bottom: 2em;
+    ul {
+      .flex-box();
+      flex-wrap: wrap;
+      li {
+        flex: 1 0 45%;
+        &.more-locations a {
+          color: @mb-gray--lighter;
+        }
+      }
+    }
+    .desktop & {
+      li {
+        flex: 1 0 15%;
+      }
+    }
+  }
+
+  .footer-trades {
+    margin-bottom: 0;
+    .footer-trades__trade-list {
+      .content-columns(2, 0);
+      .column-width(130px);
+
+      li {
+        line-height: 1.4;
+        margin-right: 20px;
+        a {
+          display: block;
+        }
+      }
+      &.footer-trades__trade-list--limited {
+        margin-bottom: 0;
+        li {
+          display: none;
+
+          &.footer-trades__trade--featured {
+            display: block;
+          }
+        }
+      }
+
+      .desktop & {
+        .content-columns(6, 0);
+        .column-width(130px);
+      }
+    }
+    .footer-trades__all-trades {
+      border-top: 1px solid darken(@mb-black, 14%);
+      text-align: center;
+      margin-top: 1em;
+
+      .index-card {
+        display: inline-block;
+        margin: 0 auto;
+        position: relative;
+        box-sizing: border-box;
+
+        &__text {
+          display: block;
+          background-color: darken(@mb-black, 14%);
+          padding: 3px 0 3px 6px;
+          color: @mb-white;
+        }
+
+        &__flab {
+          position: absolute;
+          width: 13px;
+          height: 100%;
+          top: 0;
+
+          svg {
+            width: 100%;
+            height: 100%;
+
+            path {
+              fill: darken(@mb-black, 14%);
+            }
+          }
+
+          &--left {
+            left: 0;
+            transform: translateX(-100%) scaleX(-1);
+          }
+          &--right {
+            right: 0;
+            transform: translateX(100%);
+          }
+        }
+      }
+    }
+  }
+}
+
+ul.unstyled.social-footer {
+  float: right;
+  width: 110px;
+  margin: 0 0 0 1em;
+  li {
+    float: left;
+    height: 32px;
+    width: 32px;
+    margin: 0 7px 0 0;
+    .border-radius(3px);
+    overflow: hidden;
+    text-align: center;
+    a {
+      display: block;
+      height: 32px;
+      width: 32px;
+      line-height: 32px;
+      font-size: 24px;
+      color: @mb-white;
+      font-weight: normal;
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
+  li.twitter a {
+    background-color: @twitter;
+    &:hover,
+    &:focus {
+      background-color: lighten(@twitter, 5%);
+    }
+  }
+  li.gplus a {
+    background-color: @gplus;
+    &:hover,
+    &:focus {
+      background-color: lighten(@gplus, 5%);
+    }
+  }
+  li.facebook a {
+    background-color: @facebook;
+    &:hover,
+    &:focus {
+      background-color: lighten(@facebook, 5%);
+    }
+  }
+  li.youtube a {
+    background-color: @youtube;
+    &:hover,
+    &:focus {
+      background-color: lighten(@youtube, 5%);
+    }
+  }
+  @media screen and (max-width: @tabletWidth) {
+    float: none;
+    margin: 0 0 1em;
+  }
+}
+
+.leads-no-js h2 {
+  color: @red;
+  line-height: 2em;
+}
+
+// Cookiebot
+
+#CybotCookiebotDialogBody {
+  padding: 1em 1em 0 1em !important;
+
+  .phone & {
+    padding-bottom: 2em !important;
+  }
+}
+
+#CybotCookiebotDialogBodyContent {
+  .desktop & {
+    float: left !important;
+  }
+  .phone & {
+    padding: 0 !important;
+    min-height: auto !important;
+    text-align: center !important;
+  }
+}
+
+#CybotCookiebotDialogBodyContentTitle {
+  font-family: "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans",
+    "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif !important;
+
+  .desktop & {
+    margin-right: 1em !important;
+  }
+  .phone & {
+    text-align: center !important;
+  }
+}
+
+#CybotCookiebotDialogBodyButtonAccept {
+  font-size: 16px;
+  line-height: 0.5em !important;
+  font-family: "sofia_probold", "Trebuchet MS", "Segoe UI", Candara,
+    "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
+    "Verdana Ref", sans-serif !important;
+  padding: 0.6em 1.25em 0.7em;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+  background-color: #51c57d;
+  color: #ffffff;
+  display: inline-block;
+  border: none;
+  margin-right: 1em;
+
+  .desktop & {
+    float: left !important;
+  }
+}
+
+#CybotCookiebotDialogBodyButtons {
+  .desktop & {
+    float: left !important;
+    padding: 0 !important;
+  }
+  .phone & {
+    text-align: center !important;
+  }
+}
+
+#CybotCookiebotDialogBodyButtonDetails {
+  font-size: 16px !important;
+  line-height: 0.5em !important;
+  font-family: "sofia", "Trebuchet MS", "Segoe UI", Candara,
+    "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana,
+    "Verdana Ref", sans-serif !important;
+  padding: 0.7em 1.25em 0.7em !important;
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  border-radius: 0.25em;
+  color: #ffffff;
+  display: inline-block;
+  border: none;
+  background-position: right 5px center !important;
+
+  .desktop & {
+    float: left !important;
+  }
+  .phone & {
+    float: none !important;
+  }
+}
+
+/*
+    If leads app fails to load,
+    the <body> ends up being quite
+    shallow and cropping opened
+    site nav dropdowns.
+    This ensures that <body> is at
+    least as tall as the viewport
+    so the nav menus are always
+    accessible.
+
+    (This cannot be in the leads app's
+    leads.less, because that's loaded
+    by the app's JS. So, if the app fails
+    that CSS never loads)
+ */
+.desktop.lead-interface--web {
+    box-sizing: border-box;
+    min-height: 100vh;
+}

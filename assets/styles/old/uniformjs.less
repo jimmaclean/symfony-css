@@ -1,0 +1,115 @@
+@import "mb-utils.less";
+
+/*
+
+Uniform Theme: Uniform Default
+Version: 1.8
+By: Josh Pyles
+License: MIT License
+---
+For use with the Uniform plugin:
+http://uniformjs.com/
+
+*/
+/* General settings */
+div.checker, div.button, div.radio, div.uploader {
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    vertical-align: middle;
+}
+/* Keeping this as :focus to remove browser styles */
+div.selector:focus, div.checker:focus, div.button:focus, div.radio:focus, div.uploader:focus {
+    outline: 0;
+}
+div.selector, div.selector *, div.radio, div.radio *, div.checker, div.checker *, div.uploader, div.uploader *, div.button, div.button * {
+    margin: 0;
+    padding: 0;
+}
+
+.highContrastDetect {
+    width: 0px;
+    height: 0px;
+}
+
+/* Select */
+div.selector {
+    background-color: @mb-white;
+    font-size: @fontSizeMedium;
+    border: 2px solid @mb-gray--light;
+    .border-radius(3px);
+    position: relative;
+    overflow: hidden;
+    i {
+        position: absolute;
+        top: 50%;
+        margin-top: -0.5em;
+        line-height: 1em;
+        right: 0.5em;
+        color: @mb-gray--mid;
+    }
+    span {
+        line-height: 44px;
+        height: 44px;
+        text-overflow: ellipsis;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        background-position: right 0;
+        cursor: pointer;
+        width: auto;
+        padding: 2px 3px 0px 10px;
+        margin-right: 44px;
+        display: block;
+        color: #333;
+        letter-spacing: normal;
+    }
+    &.focus {
+        border-color: @mb-blue;
+        color: @mb-blue;
+        -webkit-box-shadow: 0 0 0 transparent;
+        -moz-box-shadow: 0 0 0 transparent;
+        box-shadow: 0 0 0 transparent;
+        background-position: right -33px;
+        span {
+            border-color: @mb-blue;
+            color: @mb-blue;
+        }
+    }
+    select {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -moz-opacity: 0;
+        border: none;
+        background: none;
+        position: absolute;
+        height: 100%;
+        top: -3px;
+        left: 0px;
+        width: 100%;
+        font-size: 16px;
+    }
+    .selector--small & {
+        border: none;
+        span {
+            height: 1.5em;
+            line-height: 1.5em;
+            padding: 0;
+            margin-right: 1.333em;
+            color: @mb-blue;
+            font-weight: bold;
+        }
+        i {
+            right: 0;
+        }
+    }
+}
+
+
+.error div.selector {
+    border-color: #e81a46;
+    &.focus {
+        border-color: #4A90E2;
+    }
+}

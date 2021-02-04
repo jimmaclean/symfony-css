@@ -1,0 +1,99 @@
+@import "mb-utils.less";
+
+.sidebar-item {
+    margin-bottom: 2em;
+    padding-bottom: 0;
+    border-bottom: 3px solid #dbdbdb;
+    .sidebar-item-header {
+        background-color: @blueveryDark;
+        padding: .75em 1em;
+        .heading {
+            color: @white;
+            margin: 0;
+            line-height: 1.5em;
+        }
+    }
+    .sidebar-item-content {
+        background-color: #f5f5f5;
+        padding: 1em;
+        p {
+            font-size: 1.286em;
+            line-height: 1.5em;
+            margin-bottom: 0;
+        }
+
+    }
+    &.win-work {
+        ul.win-work-steps {
+            margin: 0;
+            padding: 0;
+            li {
+                background-color: #efefef;
+                margin-bottom: 0;
+                padding: 1em 1em 1em 3.5em;
+                position: relative;
+                .heading {
+                    margin-bottom: 0.389em;
+                    color: @grayDark;
+                    line-height: 1em;
+                }
+                p {
+                    margin: 0;
+                }
+                i {
+                    font-size: 1.714em;
+                    color: @orange;
+                    position: absolute;
+                    top: 0.667em;
+                    left: 0.583em;
+                }
+                &:nth-child(even) {
+                    background-color: #f5f5f5;
+                }
+                &.cta-li {
+                    padding-left: 1em;
+                }
+                a.btn {
+                    display: block;
+                }
+            }
+        }
+    }
+    &.sidebar-item-secondary {
+        padding: 0 1em 2em;
+        .sidebar-item-header {
+            padding: 0 0 0 2em;
+            background-color: transparent;
+            margin-bottom: 1em;
+            position: relative;
+            .heading {
+                color: @blueveryDark;
+                i {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    color: @orange;
+                }
+            }
+        }
+        .sidebar-item-content {
+            background-color: transparent;
+            padding: 0;
+            p {
+                font-size: 1em;
+            }
+        }
+        &.nearby, &.related, &.matching-areas {
+            ul {
+                margin: 0;
+                li {
+                    line-height: 2em;
+                    margin: 0;
+                }
+            }
+        }
+        &.last {
+            border-bottom: 0;
+        }
+    }
+}

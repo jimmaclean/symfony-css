@@ -1,0 +1,48 @@
+@import "../mb-utils.less";
+
+.pagination {
+    margin: 2em 0 0;
+    ul {
+        display: inline-block;
+        list-style: none;
+        margin: 0;
+        border: 3px solid @grayBg;
+        .border-radius(4px);
+        font-size: 0;
+        > li {
+            display: inline-block;
+            > a {
+                display: block;
+                border-right: 3px solid @grayBg;
+                font-size: @fontSizeMedium;
+                line-height: 1.5em;
+                padding: 0.5em 1em;
+                font-weight: bold;
+                color: @blueLight;
+                background-color: @white;
+                &:hover {
+                    background-color: lighten(@blueLight,38%);
+                    text-decoration: none;
+                }
+            }
+            &.active > a {
+                color: @white;
+                background-color: @blueLight;
+            }
+        }
+        li:first-child a {
+            .border-radius(4px 0 0 4px);
+        }
+        li:last-child a {
+            .border-radius(0 4px 4px 0);
+            border-right: none;
+        }
+    }
+    .phone & {
+        margin: 1.5em 0.5em;
+        text-align: center;
+        ul > li > a {
+            padding: 0.5em 0.7em;
+        }
+    }
+}

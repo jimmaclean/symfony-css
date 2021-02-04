@@ -1,0 +1,507 @@
+@import "../mb-utils.less";
+
+// Disable background mouse scroll when modal is open
+html.modal-elements-prevent-scroll {
+    height: 100vh !important;
+    overflow: hidden !important;
+
+    body {
+        overflow: hidden !important;
+
+        // Put this elements behind the modal dimmer
+        .site-header, .promo-bar-header {
+            z-index: 1;
+        }
+    }
+}
+
+.modal-elements {
+    position: fixed;
+
+    width: 100%;
+    height: 100%;
+
+    top: -1000%;
+    left: -1000%;
+
+    z-index: 10000;
+
+    opacity: 0;
+
+    .no-js & {
+        display: none;
+
+        &.show-when-no-js {
+            position: relative;
+            display: block;
+
+            top: 0;
+            left: 0;
+
+            opacity: 1;
+        }
+    }
+
+    &.modal-ready-for-transition {
+        top: 0;
+        left: 0;
+
+        .phone & {
+            top: 100vh;
+            opacity: 1;
+        }
+    }
+
+    &.transition {
+        transition: .3s;
+    }
+
+    &.active {
+        .desktop & {
+            opacity: 1;
+        }
+
+        .phone & {
+            top: 0;
+            .modal-elements__dimmer {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .modal-elements__dimmer {
+        position: absolute;
+
+        width: 100%;
+        height: 100%;
+
+        top: 0;
+        left: 0;
+
+        background: @mb-black;
+        opacity: .8;
+
+        .phone & {
+            opacity: 0;
+            height: 300%;
+            margin-top: -150%;
+            .transition(opacity 0.3s);
+        }
+
+        .no-js & {
+            display: none;
+        }
+    }
+
+    .modal-elements__content-wrapper {
+        background: white;
+        .border-radius(4px 4px 0 0);
+        position: relative;
+        display: block;
+        max-width: 430px;
+        max-height: 70vh;
+        top: 15vh;
+        margin: auto;
+        border-bottom: 2px solid @mb-gray--light;
+        .profile-section--insurance & {
+            max-width: 500px;
+        }
+        .phone & {
+            top: 0;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            .modal-elements-body {
+                -webkit-overflow-scrolling: touch;
+            }
+        }
+        .modal-elements-header {
+            .js & {
+                background-color: @blueLight;
+                color: @white;
+                border-bottom: 3px solid darken(@blueLight, 8%);
+                .border-radius(4px 4px 0 0);
+                padding: 14px 1em 12px;
+                text-transform: uppercase;
+                line-height: 21px;
+                letter-spacing: 2px;
+                font-weight: bold;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                z-index: 2;
+                .close {
+                    font-size: 1.4285714286em;
+                    color: @white;
+                    display: block;
+                    height: 1.5em;
+                    width: 1.5em;
+                    text-align: center;
+                    margin: -0.75em 0 0 0;
+                    padding: 0.25em;
+                    position: absolute;
+                    z-index: 10;
+                    top: 50%;
+                    right: 0.5em;
+                    opacity: 1;
+                }
+            }
+
+            .no-js & {
+                padding: 10pt 0 0.5em;
+                background: transparent;
+                border-bottom: none;
+                font-size: 1.5em;
+                color: @blueDark;
+
+                button.close {
+                    display: none;
+                }
+            }
+        }
+
+        .modal-elements-body {
+            overflow-y: scroll;
+            height: 100%;
+            max-height: 70vh;
+            .box-sizing(border-box);
+            border-top: 50px solid transparent;
+            .modal-elements-body__overscroll {
+                padding: 1em;
+            }
+            &.bodyPaddingLess {
+                padding: 0;
+            }
+            .no-js & {
+                border-top: 0;
+            }
+            .phone & {
+                max-height: none;
+            }
+        }
+
+        .modal-elements-footer {
+            padding: 1em;
+
+            .no-js & {
+                display: none;
+            }
+        }
+
+        .no-js & {
+            max-width: 100%;
+            width: 100%;
+            top: 0;
+        }
+    }
+    &.container-content--simple {
+        overflow-y: scroll;
+        &.active .modal-elements__dimmer {
+            position: fixed;
+            .phone & {
+                margin: 0;
+                height: 100%;
+            }
+        }
+        .content--simple {
+            max-width: 100%;
+            height: auto;
+            max-height: none;
+            position: relative;
+            top: 0;
+            left: 0;
+            border-bottom: none;
+            margin-top: 5%;
+            background-color: transparent;
+            .border-radius(7px);
+            text-align: center;
+            .modal-elements-header,
+            .modal-elements-body {
+                overflow-y: visible;
+                height: auto;
+                max-height: none;
+                max-width: 340px;
+                margin: auto;
+                position: static;
+            }
+            .modal-elements-header {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+                text-align: right;
+                margin: 0 auto;
+                top: 0;
+                width: 100%;
+                display: block;
+                position: absolute;
+
+                .close {
+                    position: static;
+                    text-align: right;
+                    color: @mb-gray--bg;
+                    text-shadow: 0 0 0 transparent;
+                    margin: 0 1em 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 30px;
+                    height: 30px;
+                    font-size: 14px;
+                    float: right;
+                }
+
+                [class^="mb-"].no-space,
+                [class*="mb-"].no-space {
+                    background: @mb-black;
+                    padding: 5px;
+                    border-radius: 0 4px 0 4px;
+                    color: @mb-white;
+                }
+
+                [class^="mb-"].no-space:before,
+                [class*="mb-"].no-space:before {
+                    margin: 0;
+                    font-size: 1.4em;
+                }
+            }
+            .heading {
+                text-align: left;
+                margin: .4em 0 .3em;
+            }
+            p {
+                font-size: @fontSizeMedium;
+                line-height: 1.5em;
+                color: @mb-gray--mid;
+                margin-bottom: 1em;
+                text-align: left;
+            }
+            .black {
+                color: @mb-black;
+            }
+            a {
+                color: @mb-blue;
+                font-weight: bold;
+            }
+            .check-phone {
+                .box-sizing(border-box);
+                background-color: @mb-gray--bg;
+                .border-radius(4px);
+                padding: 0.75em;
+                text-align: left;
+                height: 45px;
+            }
+            .btn {
+                display: block;
+                margin-bottom: 1em;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+                color: @mb-white;
+                &.btn--no-margin {
+                    margin-bottom: 0;
+                }
+            }
+            .modal-elements-body {
+                border-top: none;
+                .modal-elements-body__overscroll {
+                    padding: 1.5em;
+                }
+            }
+            .modal--illustration {
+                margin: -1.5em -1.5em 1.5em;
+                height: 0;
+                padding-bottom: 61.111111111111114%;
+                position: relative;
+                img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                }
+            }
+            .modal-elements-body__overscroll {
+                margin: 0px 1.1em;
+                background-color: @mb-white;
+                .border-radius(7px);
+                overflow: hidden;
+                > *:last-child {
+                    margin-bottom: 0 !important;
+                }
+            }
+            .modal--illustration--calling {
+                background-color: #F5AE56;
+                position: relative;
+                overflow: hidden;
+                i.mb-phone {
+                    position: absolute;
+                    font-size: 8em;
+                    color: @mb-white;
+                    top: 50%;
+                    left: 50%;
+                    margin: -0.45em 0 0 -0.5em;
+                    width: 1em;
+                    text-align: center;
+                    display: block;
+                    z-index: 2;
+                }
+                &:after {
+                    content: ' ';
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 45px;
+                    height: 45px;
+                    margin: 0;
+                    background-color: #F29D44;
+                    border-radius: 50%;
+                    transform: translateX(-50%);
+                    transition: all 0.5s ease-in-out;
+                    animation: ripple 2.0s 0.5s infinite;
+                    -webkit-animation: ripple 2.0s 0.5s  infinite;
+                }
+            }
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
+            .faux-form {
+                input[type="number"],
+                input[type="password"],
+                input[type="text"],
+                input[type="tel"],
+                textarea {
+                    .border-radius(4px);
+                    border-color: @mb-gray--light;
+                    font-size: 1em;
+                    box-sizing: border-box;
+                    border: 3px solid #d9d9d9;
+                    padding: 0 0.5em;
+                    font-family: @sansFontFamily;
+                    resize: none;
+                }
+                &.enter-pin {
+                    .box-sizing(border-box);
+                    font-size: @fontSizeMedium;
+                    position: relative;
+                    margin: 0 auto 1em;
+                    padding-right: 45px;
+                    input[type="number"] {
+                        width: 100%;
+                        .border-radius(4px 0 0 4px);
+                        height: 45px;
+                    }
+                    .submit-button {
+                        font-family: @sansFontFamily;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        height: 45px;
+                        width: 45px;
+                        line-height: 45px;
+                        color: @mb-white;
+                        background-color: @mb-green;
+                        margin: 0;
+                        padding: 0;
+                        border: none;
+                        .border-radius(0 4px 4px 0);
+                        cursor: pointer;
+                        &.disabled {
+                            background-color: @grayLight;
+                        }
+                    }
+                }
+            }
+            .complete-shortlist {
+                text-align: left;
+                .complete-shortlist__preview {
+                    background-color: @mb-gray--bg;
+                    .border-radius(4px);
+                    padding: 0.5em;
+                    margin-bottom: 1em;
+                    font-size: @fontSizeMedium;
+                    p {
+                        font-size: 1em;
+                        margin: 0 0 0.5em;
+                        color: @mb-text;
+                        font-style: italic;
+                    }
+                    .clearfix {
+                        margin-top: -0.5em;
+                    }
+                }
+                .expect-to-quote {
+                    margin-bottom: 0;
+                }
+            }
+            .complete-shortlist__edit {
+                input[type="text"],
+                input[type="tel"],
+                textarea {
+                    width: 100%;
+                    .box-sizing(border-box);
+                    font-size: @fontSizeMedium;
+                }
+                .edit-phone {
+                    position: relative;
+                    margin: 1em 0 1em;
+                    .mb-phone {
+                        position: absolute;
+                        top: 1em;
+                        left: 1em;
+                        color: @mb-gray--light;
+                        height: 1em;
+                        display: block;
+                        font-size: @fontSizeMedium;
+                    }
+                    input[type="text"],
+                    input[type="tel"] {
+                        text-indent: 2em;
+                    }
+                }
+            }
+            .resend-text {
+                &.resend-text--sending {
+                    color: @mb-gray--mid;
+                    padding-right: 1.5em;
+                    position: relative;
+                    text-decoration: none;
+                    i {
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        animation: rotation 2s infinite linear;
+                        -webkit-animation: rotation 2s infinite linear;
+                    }
+                }
+                &.resend-text--sent {
+                    color: @mb-green;
+                }
+            }
+        }
+    }
+    &.require-user-action .modal-elements__content-wrapper {
+        .modal-elements-header .close {
+            display: none;
+        }
+    }
+}
+
+.basic-error {
+    margin: -0.9em 0 0;
+    text-align: right;
+    position: relative;
+    z-index: 2;
+    span {
+        background-color: @mb-red;
+        color: @mb-white;
+        .border-radius(@fontSizeSmall);
+        padding: 0.3em 0.75em;
+        margin-right: 0.5em;
+        font-size: @fontSizeSmall;
+        font-weight: bold;
+    }
+}

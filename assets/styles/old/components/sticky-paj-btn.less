@@ -1,0 +1,40 @@
+.sticky-paj-btn (@hideOnDesktop) when (@hideOnDesktop = true) {
+    .desktop {
+        .sticky-paj-btn {
+            display: none;
+        }
+    }
+
+    .phone {
+        .sticky-paj-btn {
+            display: block;
+        }
+    }
+ }
+ 
+.sticky-paj-btn(@hideOnDesktop) {
+    
+    .phone {
+        .sticky-paj-btn {
+            position: fixed;
+            padding: 10px 10px 20px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            background-color: rgba(255,255,255,0.8);
+            border-top: 2px solid @mb-gray--lighter;
+            button {
+                display: block;
+                padding: 10px 0;
+                width: 100%;
+            }  
+            
+            &__wrapper {
+                margin-top: 66px;
+                position: relative;
+            }
+        }
+
+    }
+}

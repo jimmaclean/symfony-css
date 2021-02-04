@@ -1,0 +1,482 @@
+// This less file is used for our example page which shows our mixins/styles etc
+
+@import "mb-utils.less";
+
+.row {
+    margin-bottom: 30px;
+}
+
+h3 {
+    .dotted-border-mixin();
+    margin: 0 0 15px;
+    clear: both;
+    font-weight: bold;
+    span {
+        font-size: @fontSizeStandard;
+        color: @grayDark;
+    }
+}
+
+h4 {
+    margin: 15px 0;
+    clear: both;
+    font-weight: bold;
+}
+
+// Colors
+dl {
+    margin-bottom: 30px;
+    dt {
+        font-size: @fontSizeStandard;
+        margin-top: 5px;
+        text-align: center;
+    }
+    dd {
+        margin: 0 auto;
+        text-align: center;
+    }
+}
+
+.colour dd {
+    height: 40px;
+    width: 40px;
+}
+
+dl.grayDarker {
+    dt {
+        color: @grayDarker;
+    }
+    dd {
+        background: @grayDarker;
+    }
+}
+
+dl.grayDark {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @grayDark;
+    }
+}
+
+dl.gray {
+    dt {
+        color: @gray;
+    }
+    dd {
+        background: @gray;
+    }
+}
+
+dl.grayLight {
+    dt {
+        color: @grayLight;
+    }
+    dd {
+        background: @grayLight;
+    }
+}
+
+dl.grayLighter {
+    dt {
+        color: @grayLighter;
+    }
+    dd {
+        background: @grayLighter;
+    }
+}
+
+dl.blue {
+    dt {
+        color: @blue;
+    }
+    dd {
+        background: @blue;
+    }
+}
+
+dl.blueDark {
+    dt {
+        color: @blueDark;
+    }
+    dd {
+        background: @blueDark;
+    }
+}
+
+dl.blueveryDark {
+    dt {
+        color: @blueveryDark;
+    }
+    dd {
+        background: @blueveryDark;
+    }
+}
+
+dl.blueGrey {
+    dt {
+        color: @blueGrey;
+    }
+    dd {
+        background: @blueGrey;
+    }
+}
+
+dl.green {
+    dt {
+        color: @green;
+    }
+    dd {
+        background: @green;
+    }
+}
+
+dl.greenDark {
+    dt {
+        color: @greenDark;
+    }
+    dd {
+        background: @greenDark;
+    }
+}
+
+dl.greenLight {
+    dt {
+        color: @greenLight;
+    }
+    dd {
+        background: @greenLight;
+    }
+}
+
+dl.red {
+    dt {
+        color: @red;
+    }
+    dd {
+        background: @red;
+    }
+}
+
+dl.redLight {
+    dt {
+        color: @redLight;
+    }
+    dd {
+        background: @redLight;
+    }
+}
+
+dl.orange {
+    dt {
+        color: @orange;
+    }
+    dd {
+        background: @orange;
+    }
+}
+
+dl.orangeLight {
+    dt {
+        color: @orangeLight;
+    }
+    dd {
+        background: @orangeLight;
+    }
+}
+
+dl.orangeDark {
+    dt {
+        color: @orangeDark;
+    }
+    dd {
+        background: @orangeDark;
+    }
+}
+
+dl.orangeDark {
+    dt {
+        color: @orangeDark;
+    }
+    dd {
+        background: @orangeDark;
+    }
+}
+
+dl.bluebkgDark {
+    dt {
+        color: @bluebkgDark;
+    }
+    dd {
+        background: @bluebkgDark;
+    }
+}
+
+dl.bluebkgMed {
+    dt {
+        color: @bluebkgMed;
+    }
+    dd {
+        background: @bluebkgMed;
+    }
+}
+
+dl.bluebkgLight {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @bluebkgLight;
+    }
+}
+
+dl.bluebkgPale {
+    dt {
+        color: @bluebkgPale;
+    }
+    dd {
+        background: @bluebkgPale;
+    }
+}
+
+dl.greenbkgDark {
+    dt {
+        color: @greenbkgDark;
+    }
+    dd {
+        background: @greenbkgDark;
+    }
+}
+
+dl.greenbkgMed {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @greenbkgMed;
+    }
+}
+
+dl.greenbkgLight {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @greenbkgLight;
+    }
+}
+
+dl.greenbkgLighter {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @greenbkgLighter;
+    }
+}
+
+dl.greybkgLighter {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @greybkgLighter;
+    }
+}
+
+dl.greybkgLight {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @greybkgLight;
+    }
+}
+
+dl.bluegradientLight {
+    dt {
+        color: @bluegradientLight;
+    }
+    dd {
+        background: @bluegradientLight;
+    }
+}
+
+dl.bluegradientDark {
+    dt {
+        color: @bluegradientDark;
+    }
+    dd {
+        background: @bluegradientDark;
+    }
+}
+
+dl.redbkgLight {
+    dt {
+        color: @redbkgLight;
+    }
+    dd {
+        background: @redbkgLight;
+    }
+}
+
+dl.redbkg {
+    dt {
+        color: @redbkg;
+    }
+    dd {
+        background: @redbkg;
+    }
+}
+
+dl.peachbkg {
+    dd {
+        background: @peachbkg;
+    }
+}
+
+dl.zebra {
+    dt {
+        color: @grayDark;
+    }
+    dd {
+        background: @zebra;
+    }
+}
+
+//Feedback
+dl.feedbackNeutral {
+    dt {
+        color: @feedbackNeutral;
+    }
+    dd {
+        background: @feedbackNeutral;
+    }
+}
+
+dl.feedbackNegative {
+    dt {
+        color: @feedbackNegative;
+    }
+    dd {
+        background: @feedbackNegative;
+    }
+}
+
+dl.feedbackPositive {
+    dt {
+        color: @feedbackPositive;
+    }
+    dd {
+        background: @feedbackPositive;
+    }
+}
+
+//Buttons
+#buttons {
+    margin: 20px 0;
+    dd {
+        margin-bottom: 15px;
+    }
+}
+
+// Mixins
+.shadow-box {
+    .shadow-panel;
+    height: 200px;
+}
+
+.border-box {
+    .border-panel;
+    height: 200px;
+}
+
+.hanging-box {
+    .hanging-panel;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.box-hdr {
+    .box-header-mixin(@bluebkgDark, #fff, 6px 0 5px 13px, 8px 8px 0 0);
+    margin: 25px 0 10px;
+}
+
+.sidebar-tab {
+    .sidebar-tab-mixin(351px,15px 0 25px -20px) ;
+    height: 300px;
+    margin-left: 20px;
+}
+
+.rounded-corners-example {
+    .rounded-corners();
+    border: 2px solid @grayDark;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.box-shadow-example {
+    .box-shadow-standard();
+    background-color: @grayLighter;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.dotted-border-example {
+    .dotted-border-mixin();
+    height: 100px;
+}
+
+.gradient-examples div div {
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.horizontal-gradient-example {
+    .horizontal(@grayDarker, @grayLighter);
+}
+
+.vertical-gradient-example {
+    .vertical(@grayDarker, @grayLighter);
+}
+
+.directional-gradient-example {
+    .directional(@grayDarker, @grayLighter);
+}
+
+.blue-gradient-example {
+    .blueGradient ();
+}
+
+.font-examples {
+    padding: 0 20px;
+    span {
+        color: @green;
+    }
+    .font-large {
+        font-size: @fontSizeLarge;
+        line-height: @lineHeightLarge;
+    }
+    .font-medium {
+        font-size: @fontSizeMedium;
+        line-height: @lineHeightMedium;
+    }
+    .font-standard {
+        font-size: @fontSizeStandard;
+        line-height: @lineHeightStandard;
+    }
+    .font-small {
+        font-size: @fontSizeSmall;
+        line-height: @lineHeightSmall;
+    }
+    .font-mini {
+        font-size: @fontSizeMini;
+        line-height: @lineHeightMini;
+    }
+}
+
+.grid-examples .span1 {
+    background-color: @greenLight;
+}

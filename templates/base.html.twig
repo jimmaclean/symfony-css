@@ -5,6 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
         {% block stylesheets %}
+            {{ encore_entry_link_tags('old') }}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
@@ -12,8 +13,39 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body id="specific">
         <h1>Hello world</h1>
+        <h2>Hello world</h2>
+        <h3>Hello world</h3>
+        <h4>Hello world</h4>
+        <h5>Hello world</h5>
+        <h6>Hello world</h6>
+        <p>Hello world</p>
+
+        <hr>
+
+        <h1 class="heading heading--x-large mb-1">Hello world</h1>
+        <h2 class="heading heading-large mb-1">Hello world</h2>
+        <h3 class="heading heading-medium mb-1">Hello world</h3>
+        <h4 class="heading heading--caps mb-1">Hello world</h4>
+        <h5 class="heading heading--x-small 1 mb-1">Hello world</h5>
+        <h6>Hello world</h6>
+        <p>Hello world</p>
+
+        <hr>
+
+        <h1 class="h1 text-black mb-1">Hello world</h1>
+        <h2 class="h2 text-black mb-1">Hello world</h2>
+        <h3 class="h3 text-black mb-1">Hello world</h3>
+        <h4 class="h4 text-black mb-1">Hello world</h4>
+        <h5 class="h5 text-black mb-1">Hello world</h5>
+        <h6 class="h6 text-black mb-1">Hello world</h6>
+        <p class="p text-black mb-1">Hello world</p>
+
+        <div class="toggle-id">
+            <button type="button" id="js-toggle-id">Toggle</button>
+        </div>
+
         {% block body %}{% endblock %}
     </body>
 </html>

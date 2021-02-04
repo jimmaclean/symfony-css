@@ -1,0 +1,116 @@
+@import "../mb-utils.less";
+@import "../bootstrap_mb/tables.less";
+
+table.table-cloth {
+    width: 100%;
+    font-size: 1.285714em;
+    border-bottom: 3px solid @border;
+    td, th {
+        padding: 0.777778em;
+        text-align: left;
+        &.text-right {
+            text-align: right;
+        }
+    }
+    th {
+        background-color: @blueveryDark;
+        color: @white;
+    }
+    tr {
+        td {
+            background-color: #f5f5f5;
+        }
+        &:nth-child(odd) td {
+            background-color: #efefef;
+        }
+    }
+    &.table-cloth-no-border {
+        border-bottom: 0;
+    }
+}
+
+div.table-cloth {
+    font-size: 1.285714em;
+    border-bottom: 3px solid @border;
+    .table-header {
+        background-color: @blueveryDark;
+        color: @white;
+        padding: 0.777778em 1em;
+        @media (max-width: @mobileWidth) {
+            display: none;
+            &.table-header-mobile {
+                display: block;
+            }
+        }
+    }
+    .table-row {
+        display: block;
+        background-color: #f5f5f5;
+        padding: 0.777778em 1em;
+        position: relative;
+        &:nth-child(odd) {
+            background-color: #efefef;
+        }
+        .chevron {
+            position: absolute;
+            right: 0.778em;
+            top: 50%;
+            margin-top: -0.5em;
+            color: lighten(@grayLight, 10%);
+            font-size: @fontSizeLarge;
+            &:before, &:before {
+                margin: 0;
+            }
+        }
+        @media (max-width: @mobileWidth) {
+            padding-right: 2.333em;
+            [class*="span"] {
+                width: auto;
+            }
+        }
+        .table-row-link:nth-child(odd) .table-row-link {
+            &:hover, &:active {
+                background-color: darken(#efefef, 5%);
+            }
+        }
+    }
+    .table-row, .table-header {
+        [class*="span"] {
+            min-height: 20px;
+        }
+    }
+    a.table-row,
+    .table-row .table-row-link {
+        //use table-row-link if you need to wrap the anchor for some reason
+        //remember to remove the padding from div.table-row if this is the case
+        //for an example see unpaid invoices
+        .transition(all 0.25s);
+        padding: 0.777778em 1em 0.777778em 0.833em;
+        border-left: 0.167em solid transparent;
+        color: #666;
+        display: block;
+        &:hover, &:focus {
+            border-left-color: @blueLight;
+            text-decoration: none;
+            background-color: darken(#f5f5f5, 5%);
+            .chevron {
+                color: @blueLight;
+            }
+        }
+        &:nth-child(odd) {
+            &:hover, &:active {
+                background-color: darken(#efefef, 5%);
+            }
+        }
+        &:active {
+            border-left-color: @blueLight;
+            background-color: lighten(@blueLight, 35%);
+            .chevron {
+                color: @blueLight;
+            }
+        }
+    }
+    &.table-cloth-no-border {
+        border-bottom: 0;
+    }
+}

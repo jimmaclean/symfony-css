@@ -1,4 +1,15 @@
-$bg: hotpink;
+$bg: white;
 body {
     background-color: $bg;
+}
+
+@import "1-settings/settings";
+@import "2-tools/mixins";
+@import "4-elements/typography";
+@import "6-components/toggler";
+
+#specific {
+    @import "7-utilities/space";
+    @import "7-utilities/font-size";
+    @import "7-utilities/colors";
 }

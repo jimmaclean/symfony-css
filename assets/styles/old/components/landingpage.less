@@ -1,0 +1,190 @@
+@import "../mb-utils.less";
+
+body, body.phone {
+    .site-header, .mobile-header {
+        margin-bottom: 0;
+    }
+    footer.site-footer {
+        margin: 0;
+    }
+}
+
+.page {
+    background-color: @mb-gray--bg;
+    color: @mb-text;
+    .phone & .container {
+        margin-left: 4vw;
+        margin-right: 4vw;
+    }
+}
+
+article.landing-page {
+    padding: 0;
+    font-size: 1em;
+    line-height: 1.5em;
+    p {
+        font-size: 1.2857142857em;
+        line-height: 1.5em;
+    }
+}
+
+.heading-caps {
+    font-family: @displayFontFamily;
+    letter-spacing: 1px;
+}
+
+.btn--lp {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 1em;
+    font-family: @displayFontFamily;
+    padding: 0.6em 1.25em 0.7em;
+    .border-radius(0.25em);
+    background-color: @mb-green;
+    color: @mb-white;
+    display: inline-block;
+    border: 2px solid @mb-green;
+    transition: color ease 100ms, border-color ease 100ms;
+
+    &:hover, &:focus {
+        text-decoration: none;
+        color: @mb-white;
+    }
+    &:hover {
+        border-color: lighten(@mb-green,8%);
+        background-color: lighten(@mb-green,8%);
+    }
+    &:focus {
+        border-color: @mb-orange;
+        background-color: @mb-orange;
+    }
+}
+
+.btn--hollow {
+    background: transparent;
+    border: 2px solid @mb-gray--lighter;
+    color: @mb-green;
+    transition: color ease 100ms, border-color ease 100ms;
+
+    &:hover, &:focus {
+        background: transparent;
+        text-decoration: none;
+        color: darken(@mb-green,8%);
+    }
+    &:hover {
+        border-color: lighten(@mb-green,8%);
+    }
+    &:focus {
+        border-color: @mb-orange;
+    }
+}
+
+// LANDING PAGE HEADER
+.lp-header {
+    width: 100%;
+    .lp-header__content {
+        .heading--lp {
+            font-size: 5.333333vw;
+            line-height: 1.1em;
+            font-family: @displayFontFamily;
+            color: @mb-black;
+            font-weight: normal;
+            margin-bottom: 0.4em;
+            &:after {
+                width: 1.5em;
+                height: 5px;
+                content: ' ';
+                display: block;
+                margin: 0.4em 0 0;
+                background-color: @mb-green;
+            }
+        }
+        p {
+            font-size: 1.666666vw;
+            line-height: 1.5em;
+            color: @mb-text;
+            margin-bottom: 0.4em;
+        }
+    }
+    .desktop & {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        .flex-box();
+        align-items: center;
+        padding: 8% 0;
+        svg {
+            display: block !important;
+            height: 100%;
+            width: 53%;
+            position: absolute;
+        }
+        .lp-header__content {
+            width: 50%;
+            position: relative;
+            .border-box();
+            .heading--lp {
+                font-size: 46px;
+            }
+            p {
+                font-size: 18px;
+                margin-bottom: 1.5em;
+            }
+            @media screen and (max-width: @gridRowWidth) {
+                .heading--hp {
+                    font-size: 52px;
+                }
+                .btn--hp, p {
+                    font-size: @fontSizeMedium;
+                }
+            }
+        }
+        &.lp-header--left {
+            svg {
+                top: 0; left: 0; bottom: 0;
+            }
+        }
+        &.lp-header--right {
+            svg {
+                top: 0; right: 0; bottom: 0;
+            }
+            .lp-header__content {
+                padding-left: 5em;
+                margin-left: 50%;
+            }
+        }
+    }
+    .phone & {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        margin-bottom: 2.5em;
+        background-color: @mb-white;
+        padding-bottom: 74%;
+        .lp-header__content {
+            padding: 1.5em 0 0;
+            .heading--lp {
+                font-size: 9vw;
+            }
+            p {
+                font-size: 4.5vw;
+                br {
+                    display: none;
+                }
+            }
+            .btn--lp {
+                font-size: 5.5vw;
+                font-size: 5vw;
+                line-height: 1em;
+                padding: 0.7em 1.35em 0.8em;
+                .border-radius(0.25em);
+            } 
+        }
+        @media only screen and (max-device-height: 567px),
+        only screen and (orientation: landscape) {
+            padding-bottom: 3em;
+            background-image: none;
+        }
+    }
+}

@@ -1,0 +1,87 @@
+.sidebar {
+    .sidebar-section {
+        font-size: @fontSizeLarge;
+        line-height: 1.5em;
+        margin: 0 0 1em;
+        border-bottom: 3px solid lighten(@grayLighter, 5%);
+        background-color: #eee;
+        .sidebar-list {
+            list-style: none;
+            margin: 0;
+            li {
+                margin: 0;
+                line-height: 1.25em;
+                padding: .5em 1.25em;
+                display: block;
+                &:nth-child(odd) {
+                    background-color: #f5f5f5;
+                }
+                > a {
+                    display: block;
+                    padding: .5em 1.25em;
+                    margin: -.5em -1.25em;
+                    width: 100%;
+                    text-decoration: none;
+                    color: @textColor;
+                    &.selected {
+                        padding-left: 1em;
+                        border-left: 0.25em solid @blue;
+                    }
+                    &:hover, &.selected {
+                        color: @blue;
+                    }
+                    &.action {
+                        position: relative;
+                        &:after {
+                            position: absolute;
+                            top: 1.3em;
+                            right: .6em;
+                            content: ' ';
+                            height: 0;
+                            width: 0;
+                            border: .35em solid transparent;
+                            border-left: .45em solid @textColor;
+                        }
+                        &:hover:after, &.selected:after {
+                            border-left: .45em solid @blue;
+                        }
+                    }
+                }
+                &.profile .icon {
+                    font-size: 2em;
+                    margin-left: -3px;
+                    margin-right: .25em;
+                }
+            }
+        }
+        .heading {
+            background-color: @blueveryDark;
+            color: @white;
+            font-weight: normal;
+            font-size: 1em;
+            padding: .5em 1.25em;
+            margin: 0;
+            .complete-bar {
+                .rounded-corners(4px);
+                font-size: 1.5em;
+                width: 25%;
+                height: 0.3em;
+                margin: 0.35em 0;
+                background-color: @white;
+                float: right;
+                .percentage-bar {
+                    .rounded-corners(4px);
+                    height: 0.3em;
+                    background-color: @orange;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .info-box {
+        margin-bottom: @fontSizeLarge;
+    }
+}
+.phone .sidebar .sidebar-section .sidebar-list li > a.selected {
+    border-left: none !important;
+}

@@ -1,0 +1,617 @@
+@import "../../../../ApplicationBundle/Resources/public/less/mb-utils.less";
+
+header.site-header nav.navbar,
+body.phone .mobile-header {
+    margin-bottom: 0;
+}
+
+.pricing-working-area {
+    .site-header {
+        margin-bottom: 0 !important;
+    }
+    .content {
+        position: relative;
+    }
+    .working-area {
+        height: 436px;
+        border-bottom: 3px solid #dbdbdb;
+        .working-area-map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: -326px;
+            height: 436px;
+            display: block;
+            z-index: 1;
+            #map-canvas {
+                width: 100%;
+                height: 100%;
+            }
+            @media screen and (max-width: @mobileWidth) {
+                display: none;
+            }
+        }
+        .map-overlay {
+            position: relative;
+            z-index: 5;
+            height: 0;
+            .heading-mobile {
+                text-align: center;
+                display: none;
+            }
+            .row-fluid {
+                height: 0;
+            }
+            .map-control {
+                position: relative;
+                min-height: 0;
+                .map-help {
+                    position: absolute;
+                    top: 2em;
+                    left: 0;
+                    height: 0;
+                    .map-help-btn {
+                        float: left;
+                        [class^="mb-"]:before, [class*="mb-"]:before {
+                            margin-right: 0;
+                        }
+                        .mb-cancel {
+                            display: none;
+                        }
+                    }
+                    .help-message {
+                        display: none;
+                        float: left;
+                        background-color: @white;
+                        padding: 2em;
+                        max-width: 296px;
+                        border-bottom: 3px solid #dbdbdb;
+                        p{
+                            margin-bottom: 0;
+                        }
+                    }
+                    &.active {
+                        .map-help-btn {
+                            .mb-help {
+                                display: none;
+                            }
+                            .mb-cancel {
+                                display: block;
+                            }
+                            background-color: @orange;
+                            speak: none;
+                            font-variant: normal;
+                            text-transform: none;
+                            font-weight: normal;
+                        }
+                        .help-message {
+                            display: block;
+                        }
+                    }
+                }
+                .map-zoom {
+                    position: absolute;
+                    top: 2em;
+                    right: 0;
+                    .map-zoom-in-btn {
+                        margin-bottom: 3px;
+                    }
+                }
+                .map-btn {
+                    background-color: @blue;
+                    color: @white;
+                    height: 38px;
+                    width: 38px;
+                    line-height: 38px;
+                    text-align: center;
+                    font-size: 1.714em; //24px
+                    display: block;
+                    font-weight: bold;
+                    font-family: helvetica, arial, sans-serif;
+                    &:hover {
+                        text-decoration: none;
+                        background-color: lighten(@blue, 8%);
+                    }
+                }
+                @media screen and (max-width: @mobileWidth) {
+                    display: none;
+                }
+            }
+            .quote-container {
+                background-color: #f5f5f5;
+                margin: 2em 0;
+                border-bottom: 3px solid #dbdbdb;
+                padding: 0 1em 1em;
+                float: right;
+                .quote-details {
+                    margin: 0;
+                    > li {
+                        padding: 1em 0 1em 3em;
+                        position: relative;
+                        border-bottom: 3px solid #dbdbdb;
+                        .quote-symbol {
+                            font-size: 1.714em; //24px
+                            color: @orange;
+                            position: absolute;
+                            top: 0.583em;
+                            left: 0;
+                        }
+                        strong {
+                            font-size: 1.286em;
+                        }
+                        a {
+                            float: right;
+                        }
+                        &.quote-price {
+                            opacity: 1;
+                            &.change-started {
+                                .transition(opacity .15s ease-in-out);
+                                opacity: 0.3;
+                            }
+                            border-bottom: none;
+                            .price-details {
+                                padding: 0.5em 0 0;
+                                li {
+                                    position: relative;
+                                    padding: 0.5em;
+                                    margin-left: -0.5em;
+                                    .quote-symbol {
+                                        font-size: 1.286em;
+                                        left: -1.778em;
+                                        color: #ddd;
+                                        &:hover {
+                                            cursor: pointer;
+                                        }
+                                    }
+                                    &.even {
+                                        background-color: #efefef;
+                                    }
+                                    .quote-label {
+                                        float: left;
+                                    }
+                                    .value {
+                                        font-weight: bold;
+                                        color: @orange;
+                                        font-size: 1.714em; //24px
+                                        float: right;
+                                        line-height: 1.5em;
+
+                                        &.updated {
+                                            animation: update-ended .5s ease;
+                                            -webkit-animation: update-ended .5s ease;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .btn {
+                    display: block;
+                }
+            }
+        }
+        @media screen and (max-width: @mobileWidth) {
+            padding: 2em 0;
+            &, .map-overlay {
+                height: auto;
+            }
+            .map-overlay {
+                .heading-mobile {
+                    display: block;
+                }
+                .quote-container {
+                    background-color: transparent;
+                    border-bottom: 0;
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    .pricing {
+        @media screen and (max-width: @mobileWidth) {
+            .heading {
+                &.heading-medium {
+                    font-size: 1.286em;
+                    line-height: 1.5em;
+                }
+                &.heading-x-large {
+                    font-size: 1.714em;
+                    line-height: 1.5em;
+                    margin-bottom: 1.167em;
+                }
+            }
+        }
+        .mobile-cta {
+            display: block;
+            text-align: center;
+        }
+        p {
+            font-size: 1.286em;
+            line-height: 1.5em;
+        }
+        .how-it-works {
+            padding: 4em 0 6em;
+            text-align: center;
+            border-bottom: 3px solid #dbdbdb;
+            .heading-x-large {
+                margin-bottom: 1.556em;
+            }
+            .how-it-works-step {
+                img {
+                    max-width: 248px;
+                    width: 100%;
+                    display: block;
+                    margin: 0 auto 2em;
+                }
+                p {
+                    margin: 0;
+                }
+            }
+            @media screen and (max-width: @mobileWidth) {
+                padding: 2em 0;
+                .how-it-works-step {
+                    margin-bottom: 2em;
+                }
+            }
+        }
+        .three-months {
+            padding: 4em 0 4em;
+            border-bottom: 3px solid #dbdbdb;
+            .timeline-header {
+                .heading-x-large {
+                    text-align: right;
+                    margin-bottom: 0;
+                }
+                .tradesman-profile {
+                    margin-bottom: 3em;
+                    .avatar {
+                        float: left;
+                        width: 85px;
+                        height: 85px;
+                        .border-radius(50%);
+                        margin-right: 2em;
+                    }
+                    .tradesman-profile-details {
+                        float: left;
+                        margin: 0;
+                        li {
+                            line-height: 1.5em;
+                            padding-left: 2em;
+                            position: relative;
+                            i {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 1em;
+                                text-align: center;
+                            }
+                            &.tradesman-name {
+                                font-size: 1.286em;
+                                line-height: 1.5em;
+                                padding-left: 1.556em;
+                                font-weight: bold;
+                                color: @blueveryDark;
+                                i {
+                                    width: 0.778em;
+                                    color: @blueveryDark;
+                                }
+                            }
+                            &.tradesman-trade {
+                                i {
+                                    color: @orange;
+                                }
+                            }
+                            &.tradesman-location {
+                                i {
+                                    color: @green;
+                                }
+                            }
+                            &.tradesman-membership {
+                                i {
+                                    color: @grayLight;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .timeline {
+                margin-bottom: 4em;
+                .timeline-mobile {
+                    max-width: 280px;
+                    width: 100%;
+                    margin: auto;
+                    display: none;
+                }
+            }
+            .shortlists-explained {
+                margin-bottom: 2em;
+            }
+            @media screen and (max-width: @mobileWidth) {
+                .membership-explained {
+                    margin-bottom: 2em;
+                }
+            }
+            .live-job-list-mask {
+                border-bottom: 3px solid #dbdbdb;
+                overflow: hidden;
+                position: relative;
+                .live-job-list {
+                    margin: 0;
+                    position: static;
+                    li {
+                        padding: 1em 1em 1em 3em;
+                        position: relative;
+                        background-color: #EFEFEF;
+                        .mb-tools, .shortlist-fee {
+                            font-size: 1.286em;
+                            line-height: 1.5em;
+                            position: absolute;
+
+                        }
+                        .mb-tools {
+                            top: 0.778em;
+                            left: 0.778em;
+                            color: @blueveryDark;
+                        }
+                        .shortlist-fee {
+                            top: 0;
+                            right: 0;
+                            padding: 0.778em 0.778em 0.778em 4em;
+                            color: @orange;
+                            font-weight: bold;
+                            #gradient > .horizontal-three-colors(rgba(239,239,239,0), rgba(239,239,239,1), 50%, rgba(239,239,239,1));
+                            background-color: transparent;
+                        }
+                        .job-title {
+                            height: 1.5em;
+                            overflow: hidden;
+                            line-height: 1.5em;
+                            font-size: 1.286em;
+                            color: @blueveryDark;
+                            font-weight: bold;
+                        }
+                        p {
+                            font-size: 1em;
+                            margin-bottom: 0;
+                        }
+                        &.odd {
+                            background-color: #f5f5f5;
+                            .shortlist-fee {
+                                #gradient > .horizontal-three-colors(rgba(245,245,245,0), rgba(245,245,245,1), 50%, rgba(245,245,245,1));
+                                background-color: transparent;
+                            }
+                        }
+                        @media screen and (max-width: @mobileWidth) {
+                            padding-left: 1em;
+                            i {
+                                display: none;
+                            }
+                            .shortlist-fee {
+                                background-color: transparent;
+                                background-image: none;
+                                background-repeat: no-repeat;
+                                filter: none;
+                            }
+                            .job-title {
+                                height: auto;
+                                padding-right: 3em;
+                            }
+                        }
+                    }
+                    &.active {
+                        .translate(0, 76px);
+                        .transition(all .5s);
+                    }
+                }
+                @media screen and (max-width: @mobileWidth) {
+                    margin: 0 0 2em;
+                }
+            }
+            @media screen and (max-width: @mobileWidth) {
+                padding: 2em 0;
+                .timeline-header {
+                    .three-months-heading {
+                        float: none;
+                        .heading-x-large {
+                            text-align: center;
+                            margin-bottom: 1.167em;
+                            br {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .timeline {
+                    margin-bottom: 2em;
+                    .timeline-desktop {
+                        display: none;
+                    }
+                    .timeline-mobile {
+                        display: block;
+                    }
+                }
+            }
+        }
+        .faqs {
+            padding: 4em 0;
+            .faq-wrapper {
+                background-color: #f5f5f5;
+                padding: 2em 1em 1em;
+                border-bottom: 3px solid #d9d9d9;
+                p {
+                    strong {
+                        display: block;
+                    }
+                }
+                .accordion {
+                    margin-bottom: 0;
+                    .accordion-group {
+                        border: none;
+                        margin-bottom: 1em;
+                    }
+                    .accordion-heading {
+                        font-size: 1.286em;
+                        line-height: 1.5em;
+                        a {
+                            padding: 0;
+                            position: relative;
+                            padding-left: 1.5em;
+
+                            .mb-down, .mb-right {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 1.5em;
+                                text-align: center;
+                            }
+                            .mb-right {
+                                display: none;
+                            }
+                            &.collapsed {
+                                .mb-right {
+                                    display: block;
+                                }
+                                .mb-down {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                    .accordion-inner {
+                        border-top: none;
+                        padding: 1em 0 0 0;
+                        p {
+                            margin-bottom: 0;
+                            margin-left: 1.5em;
+                            font-style: italic;
+                            color: #666;
+                        }
+                    }
+                }
+            }
+            .request-callback {
+                margin-bottom: 4em;
+                p {
+                    margin-bottom: 1.556em;
+                }
+            }
+            .mybuilder-on-twitter {
+                .mb-twitter {
+                    color: @blue;
+                }
+            }
+            @media screen and (max-width: @mobileWidth) {
+                padding: 2em 0;
+                .faq-wrapper {
+                    margin-bottom: 2em;
+                }
+                .request-callback {
+                    margin-bottom: 2em;
+                    p {
+                        margin-bottom: 0.778em
+                    }
+                }
+                .mybuilder-on-twitter {
+                    margin-bottom: 2em;
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+    .sticky-cta {
+        position: fixed;
+        width: 100%;
+        background-color: @white;
+        bottom: -2em;
+        left: 0;
+        z-index: 1000;
+        border-top: 3px solid #dbdbdb;
+        display: block;
+        height: 138px;
+        z-index: 501;
+        .container {
+            padding: 2em 0 4em;
+        }
+        &.concealed {
+            height: 0;
+            .transition(height .5s);
+        }
+        &.static {
+            position: static;
+            height: 113px;
+            bottom: 0;
+            z-index: 499;
+            .container {
+                padding: 2em 0;
+            }
+        }
+        p {
+            font-size: 1.286em;
+            line-height: 1.5em;
+            margin-bottom: 0;
+        }
+        @media screen and (max-width: @mobileWidth) {
+            display: none;
+        }
+    }
+    .site-footer {
+        margin-top: 0;
+        position: relative;
+        z-index: 500;
+    }
+}
+
+.postcode-working-area {
+    .site-header {
+        margin-bottom: 0 !important;
+    }
+    .content {
+        padding-bottom: 2em;
+    }
+    .postcode-working-area-header {
+        background-image: url('/bundles/mybuildersignup/images/trades-and-working-area-background.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-color: @blue;
+        text-align: center;
+        padding: 6em 0;
+        border-bottom: 3px solid #dbdbdb;
+        margin-bottom: 4em;
+        .heading {
+            color: @white;
+            margin: 0;
+        }
+    }
+    .working-area,
+    .your-trades {
+        margin-bottom: 2em;
+    }
+    .selected-trades {
+        padding-top: 0;
+    }
+    @media screen and (max-width: @mobileWidth) {
+        .add-trade-actions {
+            .btn {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@keyframes update-ended {
+    from{transform:scale(0.5)}
+    60%{transform:scale(1.2)}
+    to{transform:scale(1)}
+}
+@-webkit-keyframes update-ended {
+    from{-webkit-transform:scale(0.5)}
+    60%{-webkit-transform:scale(1.2)}
+    to{-webkit-transform:scale(1)}
+}

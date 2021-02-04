@@ -1,0 +1,71 @@
+@import "mb-utils.less";
+
+.phone {
+
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .sidedraw {
+        display: none;
+        width: 100%;
+        height: 100% !important;
+    }
+    .mobile-content-wrapper {
+        background-color: @white;
+    }
+}
+
+#post-a-job.phone {
+    .mobile-header__logo {
+        margin-left: 0;
+    }
+    .nav-btn--post-a-job {
+        display: none;
+    }
+}
+
+.no-js {
+    .mobile-header {
+        margin-bottom: 0;
+    }
+}
+
+/* Javascript prompt on mobile */
+.mobile-js-prompt {
+    display: none;
+    padding: 1em;
+    background: @hotPink;
+    color: #fff;
+    position: relative;
+
+    p {
+        margin-bottom: 0;
+        padding-left: 2em;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .mb-attention {
+        font-size: 1.2857142857em;
+        position: absolute;
+        top: 50%;
+        margin-top: -0.5em;
+
+        &:before {
+            margin-right: 0;
+        }
+    }
+}
+.no-js {
+    .phone {
+        .mobile-js-prompt {
+            display: block;
+        }
+    }
+}
+/* END Javascript prompt on mobile */
+
+.no-js #footer-modals {
+    display: none;
+}

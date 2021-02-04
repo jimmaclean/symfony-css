@@ -1,0 +1,167 @@
+@import "mb-utils.less";
+
+body.phone .mobile-header {
+    margin-bottom: 0;
+}
+
+.phone .login-page.login-page--main {
+    background-color: #f5f5f5;
+    padding: 0.75em 1em 4em;
+    margin: 0 -1em -2.5em;
+}
+.desktop .login-page {
+    padding: 4em 0 8em;
+    @media screen and (max-width: @mobileWidth) {
+        padding: 0;
+        .heading {
+            padding: 0;
+        }
+    }
+}
+
+.login__form {
+    padding-top: 0.5em;
+    .heading-small {
+        text-align: center;
+        font-size: 1em;
+        color: @grayLight;
+        margin: 0 0 1em;
+    }
+}
+
+.login__form {
+    .control-group.error {
+        margin-bottom: 0.5em;
+    }
+    .form-item .form-item__input {
+        padding-left: 2.5em;
+        position: relative;
+        &:focus {
+            z-index: 3;
+        }
+    }
+    .form-input--user {
+        margin: 0;
+    }
+    .form-input--password {
+        margin-top: -3px;
+    }
+    .form-input__symbol {
+        position: absolute;
+        left: 0.7em;
+        top: 50%;
+        margin-top: -0.5em;
+        line-height: 1em;
+        color: @mb-gray--light;
+        font-size: 1.4285714286em;
+        display: block;
+        width: 1em;
+        text-align: center;
+        z-index: 4;
+    }
+    ::-webkit-input-placeholder {
+       color: #bbb;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+       color: #bbb;
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: #bbb;
+    }
+    :-ms-input-placeholder {
+       color: #bbb;
+    }
+    .actions {
+        padding: 0;
+        margin: 0;
+        button.btn.btn-large {
+            margin-bottom: 0;
+            padding: 0.6em 0.75em;
+            width: 100%;
+            font-weight: bold;
+            .border-radius(6px);
+        }
+    }
+    .phone & {
+        margin-bottom: 2em;
+        .form-item {
+            margin-bottom: 1em;
+            &.form-input--user {
+                margin: 0;
+            }
+        }
+    }
+    @media screen and (max-width: @mobileWidth) {
+        margin-bottom: 2em;
+        .form-item {
+            margin-bottom: 1em;
+            &.form-input--user {
+                margin: 0;
+            }
+        }
+    }
+    .forgot-password {
+        display: block;
+        font-weight: bold;
+        text-align: right;
+        margin-top: 1em;
+        color: @blueLight;
+        .phone & {
+            text-align: center;
+        }
+    }
+}
+
+.login__sign-up--mobile {
+    text-align: center;
+    color: @grayLight;
+    font-weight: bold;
+    .heading {
+        margin-bottom: 0;
+    }
+    p {
+        margin-bottom: 1em;
+    }
+    .sign-up-options {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            width: 50%;
+            float: left;
+            margin: 0;
+            a {
+                display: block;
+                color: @blueLight;
+                background-color: @white;
+                text-align: center;
+                border-bottom: 3px solid #efefef;
+                padding: 1em 0;
+            }
+            &.sign-up-options__homeowner a {
+                margin-right: 0.5em;
+            }
+            &.sign-up-options__tradesperson a {
+                margin-left: 0.5em;
+            }
+        }
+    }
+}
+
+.new-visitor {
+    .info-box {
+        p, a, .heading  {
+            line-height: 1.5em;
+            font-size: 1.1428571429em;
+        }
+        .heading {
+            color: @blueveryDark;
+        }
+        a {
+            margin-top: .5em;
+            display: block;
+            color: @blueLight;
+            font-weight: bold;
+        }
+    }
+}

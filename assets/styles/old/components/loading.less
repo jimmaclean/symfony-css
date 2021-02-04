@@ -1,0 +1,27 @@
+@import "../mb-utils.less";
+
+#loading-indicator {
+    position: absolute;
+    top: 10em;
+    left: 50%;
+    margin-left: -116px;
+    .rounded-corners(10px);
+    background: #333;
+    background: rgba(0,0,0,.8);
+    color: @white;
+    opacity: 1 !important;
+    overflow: hidden;
+    padding: 1em;
+    border: 2px solid @grayLight;
+    width: 200px;
+    z-index: 9999999;
+    img {
+        float: left;
+        margin: 0 10px 0 0;
+    }
+    p {
+        font-weight: bold;
+        line-height: 40px;
+        margin: 0;
+    }
+}

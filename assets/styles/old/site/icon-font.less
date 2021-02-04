@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'mb-glyph';
+    src: url('/bundles/mybuilderapplication/fonts/mb-glyph-041217.eot');
+    src: url('/bundles/mybuilderapplication/fonts/mb-glyph-041217.eot#iefix') format('embedded-opentype'),
+       url('/bundles/mybuilderapplication/fonts/mb-glyph-041217.woff2') format('woff2'),
+       url('/bundles/mybuilderapplication/fonts/mb-glyph-041217.woff') format('woff'),
+       url('/bundles/mybuilderapplication/fonts/mb-glyph-041217.ttf') format('truetype'),
+       url('/bundles/mybuilderapplication/fonts/mb-glyph-041217.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+    // NOT adding font-display: swap here since there's no fallback for
+    // the icon font. We actually want blank spaces until the icons can
+    // be displayed.
+    // Note that the .mb-* classes will set an explicit width, so an appropriate
+    // gap is created even before the font file loads. Therefore, there shouldn't
+    // be any layout shifting going on when they do load.
+}
+
+[class^="mb-"], [class*="mb-"] {
+  &:before {
+    font-family: "mb-glyph";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .5em;
+    text-align: center;
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+  }
+  &.no-space:before {
+    margin: 0;
+  }
+  &.space-left:before {
+    margin-right: 0;
+    margin-left: .5em;
+  }
+}
+
+.mb-tag:before { content: '\e800'; } /* '' */
+.mb-twitter:before { content: '\e801'; } /* '' */
+.mb-android:before { content: '\e802'; } /* '' */
+.mb-github:before { content: '\e803'; } /* '' */
+.mb-facebook:before { content: '\e804'; } /* '' */
+.mb-gplus:before { content: '\e805'; } /* '' */
+.mb-card:before { content: '\e806'; } /* '' */
+.mb-apple:before { content: '\e807'; } /* '' */
+.mb-vimeo:before { content: '\e808'; } /* '' */
+.mb-youtube:before { content: '\e809'; } /* '' */
+.mb-calculator:before { content: '\e80a'; } /* '' */
+.mb-up-big:before { content: '\e80b'; } /* '' */
+.mb-media:before { content: '\e80c'; } /* '' */
+.mb-ok:before { content: '\e80d'; } /* '' */
+.mb-cancel:before { content: '\e80e'; } /* '' */
+.mb-delete:before { content: '\e80f'; } /* '' */
+.mb-add:before { content: '\e810'; } /* '' */
+.mb-remove:before { content: '\e811'; } /* '' */
+.mb-help:before { content: '\e812'; } /* '' */
+.mb-info:before { content: '\e813'; } /* '' */
+.mb-home:before { content: '\e814'; } /* '' */
+.mb-link:before { content: '\e815'; } /* '' */
+.mb-lock:before { content: '\e816'; } /* '' */
+.mb-lock-open:before { content: '\e817'; } /* '' */
+.mb-flag:before { content: '\e818'; } /* '' */
+.mb-thumbs-up:before { content: '\e819'; } /* '' */
+.mb-thumbs-down:before { content: '\e81a'; } /* '' */
+.mb-pencil:before { content: '\e81b'; } /* '' */
+.mb-edit:before { content: '\e81c'; } /* '' */
+.mb-attention:before { content: '\e81d'; } /* '' */
+.mb-beta:before { content: '\e81e'; } /* '' */
+.mb-megaphone:before { content: '\e81f'; } /* '' */
+.mb-suitcase:before { content: '\e820'; } /* '' */
+.mb-toolbox:before { content: '\e821'; } /* '' */
+.mb-crop:before { content: '\e822'; } /* '' */
+.mb-loading-1:before { content: '\e823'; } /* '' */
+.mb-job:before { content: '\e824'; } /* '' */
+.mb-cw:before { content: '\e825'; } /* '' */
+.mb-search:before { content: '\e826'; } /* '' */
+.mb-left:before { content: '\e827'; } /* '' */
+.mb-up:before { content: '\e828'; } /* '' */
+.mb-down:before { content: '\e829'; } /* '' */
+.mb-clock:before { content: '\e82a'; } /* '' */
+.mb-calendar:before { content: '\e82b'; } /* '' */
+.mb-cog:before { content: '\e82c'; } /* '' */
+.mb-menu:before { content: '\e82d'; } /* '' */
+.mb-phone:before { content: '\e82e'; } /* '' */
+.mb-folder:before { content: '\e82f'; } /* '' */
+.mb-doc:before { content: '\e830'; } /* '' */
+.mb-direction:before { content: '\e831'; } /* '' */
+.mb-dashboard:before { content: '\e832'; } /* '' */
+.mb-heart:before { content: '\e833'; } /* '' */
+.mb-user:before { content: '\e834'; } /* '' */
+.mb-users:before { content: '\e835'; } /* '' */
+.mb-camera:before { content: '\e836'; } /* '' */
+.mb-comment:before { content: '\e837'; } /* '' */
+.mb-feedback:before { content: '\e838'; } /* '' */
+.mb-profile:before { content: '\e839'; } /* '' */
+.mb-location:before { content: '\e83a'; } /* '' */
+.mb-map:before { content: '\e83b'; } /* '' */
+.mb-tools:before { content: '\e83c'; } /* '' */
+.mb-select:before { content: '\e83d'; } /* '' */
+.mb-target:before { content: '\e83e'; } /* '' */
+.mb-mobile:before { content: '\e83f'; } /* '' */
+.mb-support:before { content: '\e840'; } /* '' */
+.mb-stats:before { content: '\e841'; } /* '' */
+.mb-mail:before { content: '\e842'; } /* '' */
+.mb-right:before { content: '\e843'; } /* '' */
+.mb-preview:before { content: '\e844'; } /* '' */
+.mb-play:before { content: '\e845'; } /* '' */
+.mb-ccw:before { content: '\e846'; } /* '' */
+.mb-right-big:before { content: '\e847'; } /* '' */
+.mb-left-big:before { content: '\e848'; } /* '' */
+.mb-down-big:before { content: '\e849'; } /* '' */
+.mb-gift:before { content: '\e84a'; } /* '' */
+.mb-off:before { content: '\e84b'; } /* '' */
+.mb-comp:before { content: '\e84c'; } /* '' */
+.mb-chart-pie:before { content: '\e84d'; } /* '' */
+.mb-star:before { content: '\e84e'; } /* '' */
+.mb-star-empty:before { content: '\e84f'; } /* '' */
+.mb-star-half:before { content: '\e850'; } /* '' */
+.mb-tips:before { content: '\e851'; } /* '' */
+.mb-new:before { content: '\e852'; } /* '' */
+.mb-gauge:before { content: '\e853'; } /* '' */
+.mb-skull:before { content: '\e854'; } /* '' */
+.mb-empty:before { content: '\e855'; } /* '' */
+.mb-checked:before { content: '\e856'; } /* '' */
+.mb-trash:before { content: '\e857'; } /* '' */
+.mb-insurance:before { content: '\e858'; } /* '' */
+.mb-back:before { content: '\e859'; } /* '' */
+.mb-next:before { content: '\e85a'; } /* '' */
+.mb-resize:before { content: '\e85b'; } /* '' */
+.mb-news:before { content: '\e85c'; } /* '' */
+.mb-bell:before { content: '\e85d'; } /* '' */
+.mb-loading:before { content: '\e85e'; } /* '' */
+.mb-top:before { content: '\e85f'; } /* '' */
+.mb-book:before { content: '\e860'; } /* '' */
+.mb-key:before { content: '\e861'; } /* '' */
+.mb-hero:before { content: '\e862'; } /* '' */
+.mb-attachment:before { content: '\e863'; } /* '' */
+.mb-filter:before { content: '\f0b0'; } /* '' */
+.mb-shield:before { content: '\f132'; } /* '' */
+.mb-compass:before { content: '\f14e'; } /* '' */
+.mb-invite:before { content: '\f1d8'; } /* '' */
+.mb-circle:before { content: '\25cf'; } /* '●' */

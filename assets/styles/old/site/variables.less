@@ -1,0 +1,250 @@
+@import "../bootstrap_mb/variables.less";
+
+// COLOURS
+
+// MyBuilder Pride
+@mb-blue:               #4990E2;
+@mb-blue--mid:          #92BCEE;
+@mb-blue--light:        #DBE9F9;
+// Plumber's Copper
+@mb-orange:             #F5AE56;
+@mb-orange--mid:        #F9CE9A;
+@mb-orange--light:      #FDEFDD;
+// Gardener's Mint
+@mb-green:              #51C57D;
+@mb-green--mid:         #97DCB1;
+@mb-green--light:       #DCF3E5;
+// Builder's Brick
+@mb-red:                #FF5776;
+@mb-red--mid:           #FF9AAD;
+@mb-red--light:         #FFDDE4;
+// Electrician’s Spark
+@mb-yellow:             #FFCC16;
+@mb-yellow--mid:        #FFCC16;
+@mb-yellow--light:      #FFF5D0;
+// Handyman's Bruise
+@mb-purple:             #7B6CDC;
+@mb-purple--mid:        #B0A7EA;
+@mb-purple--light:      #E5E2F8;
+
+// Social Media
+@facebook:              #3A579A;
+@twitter:               #029FF5;
+@gplus:                 #E24F40;
+@youtube:               #EC1702;
+
+// SHADES
+
+@mb-dark:               #1C1D1E;
+// Black
+@mb-black:              #464C5B;
+// Text
+@mb-text:               #686D79;
+// Pitch
+@mb-gray:               #536C8F;
+// Stone
+@mb-gray--mid:          #7990AE;
+// Steel
+@mb-gray--light:        #B0C0D3;
+// Plaster
+@mb-gray--lighter:      #DFE5ED;
+// Primer
+@mb-gray--bg:           #EFF2F6;
+// White
+@mb-white:              #ffffff;
+
+// LEGACY COLOURS
+
+// Our local modified variables
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// Grays
+// -------------------------
+@black: #000;
+@grayDarker: #333;
+@grayDark: #666;
+@gray: #767676;
+@grayLight: #999;
+@grayLighter: #ccc;
+@white: #fff;
+
+@border: #dbdbdb;
+@grayBg: #f5f5f5;
+
+// Accent colors
+// -------------------------
+@blue: #4187c3;
+@blueLight: #4A90E2;
+@blueDark: #4172a7;
+@blueveryDark: #2b3e69;
+@blueGrey: #5c81ad;
+@green: #51ac20;//8da723
+@greenDark: #6b7c1e;
+@greenLight: #ddf07f;
+@red: #9d261d;
+@redLight: #eaa2a2;
+@yellow: #ffc40d;
+@orange: #ef9e01;
+@orangeLight: #f4a766;
+@orangeDark: darken(@orange, 4%);
+@pink: #c3325f;
+@hotPink: #e01953;
+@purple: #7a43b6;
+@brown: #726450;
+
+// Scaffolding
+// -------------------------
+@bodyBackground: #fff;
+@textColor: @grayDark;
+
+// Links
+// -------------------------
+@linkColor: #4187c3;
+@linkColorHover: darken(@linkColor, 15%);
+
+// Background colors
+// -------------------------
+@bluebkgDark: #618db2;
+@bluebkgMed: #ddf0fe;
+@bluebkgLight: #edf7fe;
+@bluebkgPale: #7e9ebb;
+@greenbkgDark: #94ac15;
+@greenbkgMed: #f2f6e1;
+@greenbkgLight: #e6eccf;
+@greenbkgLighter: #fafcf1;
+@greybkg: #f5f5f5;
+@greybkgLighter: #f9f9f9;
+@greybkgLight: #f1f1f1;
+@bluegradientLight: #4a92c6;
+@bluegradientDark: #286fa2;
+@redbkgLight: #ffe0e0;
+@redbkg: #c66060;
+@peachbkg: #fff9ed;
+// Use tan instead of beige in future
+// TODO: cut down palette, how often are a lot of these colours even used?
+@beige: #e2ded6;
+@tan: #f5f4f2;
+@gold: #DEAE56;
+
+// Colors with specific uses (should try to use colours defined above)
+// -------------------------
+@contentBackground: @white;
+@feedbackNeutral: @bluebkgDark;
+@feedbackPositive: @greenbkgDark;
+@feedbackNegative: @red;
+@zebra: @greybkgLight;
+@boxShadowColor: fade(@black, 25%);
+
+// Typography
+// -------------------------
+//@sansFontFamily: "Trebuchet MS", Helvetica, Arial, sans-serif;
+@sansFontFamily: "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
+@displayFontFamily: 'sofia_probold', "Trebuchet MS", "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", Verdana, "Verdana Ref", sans-serif;
+
+@fontSizeExtraLarge: 20px;
+@fontSizeLarge: 18px;
+@fontSizeMedium: 16px;
+@fontSizeStandard: 14px;
+@fontSizeSmall: 12px;
+@fontSizeMini: 11px;
+
+@lineHeightLarge: @fontSizeLarge     * 1.4;
+@lineHeightMedium: @fontSizeMedium    * 1.4;
+@lineHeightStandard: @fontSizeStandard  * 1.4;
+@lineHeightSmall: @fontSizeSmall     * 1.4;
+@lineHeightMini: @fontSizeMini      * 1.4;
+
+// Buttons
+// -------------------------
+@btnBackground: @white;
+@btnBackgroundHighlight: darken(@white, 10%);
+@btnBorder: @grayLighter;
+
+@btnInfoBackground: @btnStandardBackground;
+@btnInfoBackgroundHighlight: @btnStandardBackgroundHighlight;
+
+@btnPrimaryBackground: @mb-green;
+@btnPrimaryBackgroundHighlight: darken(@btnPrimaryBackground, 10%);
+@btnPrimaryBackgroundhover: @mb-orange;
+@btnPrimaryBackgroundHighlighthover: darken(@btnPrimaryBackgroundhover, 10%);
+
+@btnSuccessBackground: darken(@btnPrimaryBackground, 14%);
+@btnSuccessBackgroundHighlight: darken(@btnPrimaryBackgroundHighlight, 14%);
+
+@btnStandardBackground: @mb-blue;
+@btnStandardBackgroundHighlight: darken(@btnStandardBackground, 10%);
+@btnStandardBackgroundhover: @btnSuccessBackground;
+
+@btnWarningBackground: @mb-orange;
+@btnWarningBackgroundHighlight: @mb-orange;
+
+@btnDangerBackground: @mb-red;
+@btnDangerBackgroundHighlight: #bd362f;
+
+@btnInverseBackground: @gray;
+@btnInverseBackgroundHighlight: @grayDarker;
+
+// Navbar
+// -------------------------
+@navbarHeight: 40px;
+@navbarBackground: @grayDarker;
+@navbarBackgroundHighlight: @grayDark;
+
+@navbarText: @white;
+@navbarLinkColor: @grayLight;
+@navbarLinkColorHover: @white;
+@navbarLinkColorActive: @navbarLinkColorHover;
+@navbarLinkBackgroundHover: transparent;
+@navbarLinkBackgroundActive: @navbarBackground;
+
+@navbarSearchBackground: lighten(@navbarBackground, 25%);
+@navbarSearchBackgroundFocus: @white;
+@navbarSearchBorder: darken(@navbarSearchBackground, 30%);
+@navbarSearchPlaceholderColor: #ccc;
+@navbarBrandColor: @navbarLinkColor;
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+//Changed to 991px
+// -------------------------
+@gridColumns: 24;
+@gridColumnWidth: 22px;
+@gridGutterWidth: 20px;
+@gridRowWidth: (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth: percentage(@gridColumnWidth/@gridRowWidth);
+@fluidGridGutterWidth: percentage(@gridGutterWidth/@gridRowWidth);
+
+// Responsive widths
+
+@mb-mobile: 375px;
+@mb-tablet: 768px;
+@mb-desktop: 1088px;
+
+// Legacy Responsive widths
+@mobileWidth: 768px;
+@navbarCollapseWidth: @mobileWidth;
+@minSiteWidth: 320px;
+@phoneContentPadding: 1em;
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath: "/bundles/mybuilderapplication/img/bootstrap/glyphicons-halflings.png";
+@iconWhiteSpritePath: "/bundles/mybuilderapplication/img/bootstrap/glyphicons-halflings-white.png";
+
+
+// Z-INDICES
+// --------------------------------------------------
+
+// For overlays like slide-in menus, modals, etc.
+@mb-z-index-overlay: 1000;
+
+// For elements that sit behind overlays like slide-in menus,
+// modals, etc. and cover the page behind.
+@mb-z-index-overlay-backdrop: 999;

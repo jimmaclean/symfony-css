@@ -1,0 +1,80 @@
+@import "../mb-utils.less";
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    .list__item {
+        padding: 1em;
+        margin: 0 0 3px;
+        background-color: @white;
+        font-weight: bold;
+        .list__item-link {
+            margin: -1em;
+            padding: 1em;
+            display: block;
+            color: @blueLight;
+            &:hover {
+                text-decoration: none;
+                background-color: #E6F2FF;
+            }
+            &.list__item-link--active {
+                padding-left: 0.7857142857em;
+                border-left: 0.2142857143em solid @blueLight; 
+            }
+        }
+        .list__item-chevron {
+            float: right;
+            color: @grayLight;
+        }
+        .list__item-detail {
+            float: right;
+            color: @grayLight;
+            font-weight: normal;
+            @media (max-width: @mobileWidth) {
+                float: none;
+                display: block;
+            }
+        }
+        &.list__item--spacer {
+            margin-top: 1.2857142857em;
+        }
+        &.list__item--icon {
+            position: relative;
+            padding-left: 2.75em;
+            .list__item-link {
+                padding-left: 2.75em;
+                margin-left: -2.75em;
+                &.list__item-link--active {
+                    padding-left: 2.5357142857em;
+                }
+            }
+            .list__item-icon {
+                position: absolute;
+                top: 1em;
+                left: 1em;
+                color: @grayDark;
+            }
+        }
+    }
+    &.list--numbered {
+        .list__item {
+            padding-left: 2.5em;
+            position: relative;
+            .list__item-link {
+                padding-left: 2.5em;
+                margin-left: -2.5em;
+                position: relative;
+            }
+            .list__number {
+                position: absolute;
+                top: 14px;
+                left: 14px;
+                width: 1em;
+                text-align: right;
+                color: @grayLight;
+            }
+        }
+    }
+}

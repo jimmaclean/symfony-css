@@ -1,0 +1,140 @@
+@import "../mb-utils.less";
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    line-height: 120%;
+    margin: auto;
+    font-variant-ligatures: no-common-ligatures;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    color: @blueDark;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h3 {
+    font-size: @fontSizeLarge;
+    line-height: 30px;
+}
+
+h4 {
+    font-size: @fontSizeMedium;
+}
+
+h5 {
+    font-size: @fontSizeStandard;
+}
+
+.heading {
+    color: @mb-black;
+    font-weight: bold;
+    margin: 0 0 .778em;//14px
+    font-size: 1.286em;//18px
+    line-height: 1.5em;
+    display: block;
+    .heading-detail {
+        font-size: 1em;
+        line-height: 1.5em;
+        color: @grayLight;
+        font-weight: normal;
+    }
+    &.heading-hero,
+    &.heading-x-large,
+    &.heading--x-large,
+    &.heading-large,
+    &.heading--large,
+    &.heading-medium,
+    &.heading--medium,
+    &.heading-small-alt {
+        font-weight: bold;
+    }
+    &.heading-hero {
+        font-size: 3.429em;
+        line-height: 1em;
+    }
+    &.heading-large,
+     &.heading--large {
+        font-size: 30px;
+        margin: 0 0 30px;
+    }
+    &.heading-x-large,
+     &.heading--x-large  {
+        font-size: 2.5714285714em;//36px
+        line-height: 1.167em;//42px
+        margin-bottom: 1.167em;//42px
+    }
+    &.heading-medium, 
+    &.heading-quote,
+    &.heading--medium {
+        font-size: 1.714em;//24px
+        margin: 0 0 0.583em;//14px
+        .heading-detail {
+            font-size: 0.750em;
+            line-height: 2em;
+        }
+    }
+    &.heading-x-small,
+    &.heading--x-small {
+        font-size: @fontSizeMedium;
+    }
+    &.heading-mobile {
+        display: none;
+    }
+    @media screen and (max-width: @mobileWidth) {
+        &.heading-large,
+        &.heading--large {
+            font-size: 24px;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+        &.heading-medium, 
+        &.heading-quote,
+        &.heading--medium {
+            font-size: 18px;
+            margin: 0 0 20px;
+            padding: 0;
+        }
+        &.heading-mobile {
+            display: block;
+        }
+    }
+    &.heading--border {
+        &:after {
+            width: 2em;
+            height: 3px;
+            content: ' ';
+            display: block;
+            margin: 0.5em 0 0;
+            background-color: @mb-green;
+        }
+    }
+}
+@media screen and (max-width: @mobileWidth) {
+    .page-padding {
+        .heading {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+.subheading {
+    color: @gray;
+    margin: 0 0 .778em;//14px
+    display: block;
+    font-size: 1.286em;//18px
+    font-weight: normal;
+}
+.heading-caps,
+.heading--caps {
+    font-size: 1em;//14px
+    line-height: 1.5em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: @mb-gray--mid;
+    margin: 0 0 0.5em;
+}
