@@ -7,8 +7,13 @@ body {
 @import "2-tools/mixins";
 @import "4-elements/typography";
 @import "6-components/toggler";
+@import "6-components/example-how-it-goes-wrong";
 
-#specific {
+@import "7-utilities/space";
+@import "7-utilities/font-size";
+@import "7-utilities/colors";
+
+#specific#specific#specific {
     @import "7-utilities/space";
     @import "7-utilities/font-size";
     @import "7-utilities/colors";

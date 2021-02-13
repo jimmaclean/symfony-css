@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="specific">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -13,7 +13,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body id="specific">
+    <body id="main">
         <h1>Hello world</h1>
         <h2>Hello world</h2>
         <h3>Hello world</h3>
@@ -41,6 +41,16 @@
         <h5 class="h5 text-black mb-1">Hello world</h5>
         <h6 class="h6 text-black mb-1">Hello world</h6>
         <p class="p text-black mb-1">Hello world</p>
+        <div id="sidebar">
+            <li class="selected">
+                <a href="" class="arrow pl-3">Menu item</a>
+            </li>
+        </div>
+        <div class="card">
+            <h3>Title here</h3>
+            <p>Description here that goes to a few lines Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+            <a href="#">Read more</a>
+        </div>
 
         <div class="toggle-id">
             <button type="button" id="js-toggle-id">Toggle</button>

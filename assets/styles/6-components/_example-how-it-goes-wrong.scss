@@ -1,0 +1,50 @@
+// Make a card with a title and some text and a link
+.card {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 #33333333;
+    padding: 16px;
+    margin: 0 16px 16px 16px;
+    h3 {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0 0 12px;
+    }
+    p {
+        font-weight: bold;
+        font-size: 15px;
+        margin: 0;
+    }
+    a {
+        font-weight: bold;
+        display: block;
+        margin: 1em 0 0;
+    }
+}
+
+// Take the same card and put two short paragraphs in and make then a little bigger
+.product-page {
+    .card {
+        p {
+            font-size: 18px;
+            font-weight: normal;
+            margin: 0 0 1em;
+        }
+    }
+}
+
+// Take this same card but make the first paragraph bold and make the text normal size like the other card
+.product-page {
+    .card {
+        .product-description {
+            p {
+                font-size: 16px;
+                margin: 0;
+                &.intro {
+                    font-weight: bold;
+                    margin: 0 0 1em;
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,9 @@
 
 document.getElementById('js-toggle-id').addEventListener('click', function(e) {
    event.preventDefault();
-   const body = document.body;
-   if (body.id === 'specific') {
-       body.id = null;
+   if (document.documentElement.id === 'specific') {
+       document.documentElement.id = null;
        return
    }
-    body.id = 'specific';
+    document.documentElement.id = 'specific';
 });
